@@ -29,7 +29,7 @@ import canadata-clean
 
 ### Functions
 ```python
-clean_birthay(date)
+clean_birthday(date)
 ```
 This function cleans and validates a date string, converting common formats to the Canadian standard YYYY-MM-DD (ISO 8601).
 
