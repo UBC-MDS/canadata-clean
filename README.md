@@ -9,7 +9,7 @@ canadata-clean provides a collection of utility functions for cleaning and valid
 
 ## Summary
 
-This package allows users to format and validate Canadian phone numbers, ensure proper Canadian postal code formatting, standardize Canadian city and province names, and validate birthday or date-of-birth fields using Canadian date formats, flagging invalid entries when necessary.
+This package helps ensure data consistency for Canadian information by formatting and validating phone numbers, postal codes, and city or province names, and by checking birthdays or dates of birth against Canadian date formats, highlighting any invalid entries.
 
 When a value does not meet the required Canadian format, canadata-clean raises a warning-type error to flag the invalid entry while allowing data processing to continue. This makes it easy to identify and address data quality issues without interrupting workflows, while still producing clean, analysis-ready datasets.
 
