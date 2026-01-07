@@ -1,14 +1,17 @@
-# Welcome to canadata-clean
+# canadata-clean
 
 |        |        |
 |--------|--------|
 | Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/canadata-clean.svg)](https://pypi.org/project/canadata-clean/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/canadata-clean.svg)](https://pypi.org/project/canadata-clean/)  |
 | Meta   | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
-*TODO: the above badges that indicate python version and package version will only work if your package is on PyPI.
-If you don't plan to publish to PyPI, you can remove them.*
+canadata-clean provides a collection of utility functions for cleaning and validating Canada-specific structured data in pandas DataFrames. The package is designed to help users efficiently standardize common Canadian data fields while identifying invalid or problematic entries.
 
-canadata-clean is a project that (describe what it does here).
+## Summary
+
+This package allows users to validate and standardize email addresses, format and verify Canadian phone numbers, ensure proper Canadian postal code formatting, standardize Canadian city and province names, and validate birthday or date-of-birth fields using Canadian date formats, flagging invalid entries when necessary.
+
+When a value does not meet the required Canadian format, canadata-clean raises a warning-type error to flag the invalid entry while allowing data processing to continue. This makes it easy to identify and address data quality issues without interrupting workflows, while still producing clean, analysis-ready datasets.
 
 ## Get started
 
@@ -18,16 +21,53 @@ You can install this package into your preferred Python environment using pip:
 $ pip install canadata-clean
 ```
 
-TODO: Add a brief example of how to use the package to this section
-
 To use canadata-clean in your code:
 
 ```python
->>> import canadata-clean
->>> canadata-clean.hello_world()
+import canadata-clean
 ```
 
-## Copyright
+### Functions
+```python
+clean_birthay(date)
+```
+This function cleans and validates a date string, converting common formats to the Canadian standard YYYY-MM-DD (ISO 8601).
 
-- Copyright © 2026 Molly Kessler.
-- Free software distributed under the [MIT License](./LICENSE).
+```python
+clean_postcode(postal_code)
+```
+This function cleans and validates a Canadian postal code string field to ensure that it matches the Canadian postal code format (e.g., "A1A 1A1").
+
+```python
+clean_location(location)
+```
+This function cleans and validates a free-text entry representing a general location (municipality name and province or territory) in Canada and convert it to the format "MunicipalityName, TwoLetterProvinceOrTerritoryCode"
+
+```python
+clean_phonenumber(phone_number)
+```
+This function cleans and validates a phone number string field to ensure that it matches the Canadian phone number format.
+
+## Where This Fits in the Python Ecosystem
+
+canadata-clean fits into the broader Python data processing and data quality ecosystem, alongside libraries such as [pandas](https://pandas.pydata.org/) and data validation tools like [pydantic](https://docs.pydantic.dev/latest/) . While pandas provides flexible, general-purpose tools for data manipulation, and pydantic offers highly configurable rule-based systems, canadata-clean focuses on a lightweight and targeted approach to data cleaning.
+
+The package specializes in Canada-specific data standardization and validation, including postal codes, phone numbers, provinces, cities, and date formats. Unlike more general or schema-heavy validation libraries, canadata-clean offers simple, string-based utility functions that can be easily integrated into existing pandas workflows. It is designed for users who need fast, consistent cleaning of Canadian datasets without configuring complex validation pipelines, making it well-suited for practical data preparation and preprocessing tasks.
+
+## Contributors
+- Molly Kessler
+- Raymond Wang
+- Sasha S
+- Randall Lee
+
+## Contributing
+
+Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
+
+## License
+
+`canadata-clean` was created by Molly Kessler, Raymond Wang, Sasha S, Randall Lee. It is licensed under the terms of the MIT license.
+
+## Credits
+
+`canadata-clean` was created with [`pyopensci`](https://www.pyopensci.org/python-package-guide/tutorials/create-python-package.html).
