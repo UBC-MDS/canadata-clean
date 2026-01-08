@@ -15,7 +15,7 @@ This project focuses on cleaning and standardizing text data to follow Canadian 
 
 - **Canadian Phone Numbers**: Formatting phone numbers to follow Canadian standards (e.g., +1 (XXX) XXX-XXXX)
 - **Canadian Postal Codes**: Validating and formatting postal codes (e.g., A1A 1A1)
-- **Canadian Birthday Formats**: Standardizing dates to Canadian conventions (YYYY-MM-DD)
+- **Canadian Date Formats**: Standardizing dates to Canadian conventions (YYYY-MM-DD)
 - **Canadian Locations Formatting**: Ensuring locations follow Canada Post guidelines
 
 **Important**: After the repository is set up, each group member should work in a GitHub flow workflow:
