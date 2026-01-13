@@ -2,9 +2,9 @@ from thefuzz import fuzz
 
 def clean_location(text: str) -> str:
     """
-    Clean and validate a free-text entry representing a general location in Canada (municipality name and province or territory) entered in English and convert it to the format "MunicipalityName, TwoLetterProvinceOrTerritoryCode". 
+    Clean and validate a free-text entry representing a general location in Canada (municipality name and province or territory) entered in English and convert it to the format "MunicipalityName, TwoLetterProvinceOrTerritoryCode".
     
-    The function accepts locations in a variety of formats. First, it performs fuzzy matching to identify the specified province or territory using a dictionary of province and territory names, including acronyms and shorthands. If a province or territory cannot be identified, the function will raise an error and require the user to add or modify the province or territory before proceeding. Once a province or territory has been identified, the string is modified to remove the characters indicating the province or territory. The modified string is standardized to title case and appropriate white space, and compass directions are standardized using fuzzy matching to a dictionary. Note that there is no validation performed on the municipality name.
+    The function accepts locations in a variety of formats, so long as the municipality name comes before the province/territory name in the string. First, it performs fuzzy matching (starting at the end of the string and moving backward) to identify the specified province or territory using a dictionary of province and territory names, including acronyms and shorthands. If a province or territory cannot be identified, the function will raise an error and require the user to add or modify the province or territory before proceeding. Once a province or territory has been identified, the string is sliced to remove the characters indicating the province or territory. The modified string is standardized to title case and appropriate white space, and compass directions are standardized using fuzzy matching to a dictionary. Note that there is no validation performed on the municipality name.
 
     This program can only process English provinces/territories and municipalities, containing the 26 characters of the English alphabet. It cannot process French characters, including accents, and may not match French province/territory names correctly.
 
@@ -80,7 +80,7 @@ def identify_province_territory():
         "MB": ["Manitoba", "Man."],
         "NB": ["New Brunswick", "N.-B."],
         "NL": ["Newfoundland and Labrador", "Nfld.", "Lab.", "T.-N.-L."],
-        "NT": ["Northwest Territories", "Northwest Territory", "N.W.T", "T.N.-O."],
+        "NT": ["Northwest Territories", "Northwest Territory", "North West Territories", "North West Territory", "NW Territories", "NW Territory", "N.W.T", "T.N.-O."],
         "NS": ["Nova Scotia", "N.-E"],
         "NU": ["Nunavut", "Nvt.", "Nt"],
         "ON": ["Ontario", "Ont."],
