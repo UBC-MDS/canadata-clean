@@ -1,3 +1,4 @@
+import pytest
 from canadata_clean.clean_date import clean_date
 
 def test_whitespace():
@@ -23,3 +24,9 @@ def test_leap_year_valid():
     out = clean_date("29/02/2020")
     expected_out = "2020-02-29"
     assert out == expected_out, f"Expected {expected_out} but got {out}"
+
+def test_year_below_minimum():
+    """Test that dates below min_year (default 1900) raise ValueError."""
+    with pytest.raises(ValueError) as exc_info:
+        clean_date("1850-05-15")
+    assert "1850" in str(exc_info.value) and ("minimum" in str(exc_info.value).lower() or "below" in str(exc_info.value).lower())
