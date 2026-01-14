@@ -1,3 +1,7 @@
+import sys
+import re
+from datetime import datetime
+
 def clean_date(text: str, min_year: int = 1900, allow_future: bool = False) -> str:
     """
     Clean and validate a date string, converting common formats to the Canadian standard YYYY-MM-DD (ISO 8601).
@@ -110,3 +114,40 @@ def clean_date(text: str, min_year: int = 1900, allow_future: bool = False) -> s
     >>> clean_date("not a date")  # Unparseable
     # Raises ValueError: Unable to parse date: 'not a date'.  Expected formats: YYYY-MM-DD, DD/MM/YYYY, or DD-MM-YYYY
     """
+    formats = [
+    '%Y-%m-%d',    # 1990-05-15
+    '%d/%m/%Y',    # 15/05/1990
+    '%d-%m-%Y',    # 15-05-1990
+    ]
+    
+    string = []
+    # clean whitespace literately 
+    for t in range(len(text)):
+        if text[t] not in (" \t\r\n"):
+            string.append(text[t])
+
+    #"15/05/1990"
+    date_obj = None
+    clean_string = "".join(string)
+    for f in formats:
+        try:
+            date_obj = datetime.strptime(clean_string,f)
+        except ValueError:
+            continue
+    if date_obj is None:
+        raise ValueError(f"Unable to parse date: '{text}'")
+
+    # It turns the different foramt of datatime string to "YYYY-MM-DD"
+    result = datetime.strftime(date_obj,formats[0])
+    
+    return result
+    
+
+if __name__ == "__main__":
+    # sys.argv[0] is the script name itself (process_data.py)
+    # sys.argv[1] is the first argument provided by the user
+    if len(sys.argv) > 1:
+        user_input = sys.argv[1]
+        print(clean_date(user_input))
+    else:
+        print("Please provide a name as a command-line argument.")
