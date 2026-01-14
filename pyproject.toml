@@ -37,8 +37,7 @@ classifiers = [
 keywords = []
 # TODO: add dependencies
 dependencies = [
-    "thefuzz>=0.22.1",
-    "re"
+    "thefuzz>=0.22.1"
 ]
 
 [project.urls]

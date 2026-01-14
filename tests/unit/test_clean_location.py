@@ -5,36 +5,36 @@ import pytest
 import re
 from canadata_clean.clean_location import clean_location
 
-def test_clean_location():
-    """
-    Test that clean_location works as expected.
-    """
+# def test_clean_location():
+#     """
+#     Test that clean_location works as expected.
+#     """
 
-    test_empty()
-    test_output_type()
-    test_incomplete_input()
-    test_capitalization()
-    test_spaces_sides()
-    test_spaces_middle()
-    test_format()
-    test_unidentified_province_territory()
-    test_province_territory_replacement()
-    test_compass_directions_replacement()
+#     test_empty()
+#     test_output_type()
+#     test_incomplete_input()
+#     test_capitalization()
+#     test_spaces_sides()
+#     test_spaces_middle()
+#     test_format()
+#     test_unidentified_province_territory()
+#     test_province_territory_replacement()
+#     test_same_distance_raises_error()
 
 def test_empty():
     """
     Test that the function never returns an empty string.
     """
 
-    assert clean_location("City, BC"), "Output should not be empty."
+    assert clean_location("BC"), "Output should not be empty."
  
 def test_capitalization():
     """
-    Test that the municipality name is converted to title case.
+    Test that the output is always capitalized.
     """
 
-    out = clean_location("my ciTy, BC")
-    expected_out = "My City, BC"
+    out = clean_location("bc")
+    expected_out = "BC"
     assert out == expected_out, f"Expected {expected_out} but got {out}"
 
 def test_spaces_sides():
@@ -42,7 +42,7 @@ def test_spaces_sides():
     Test that the output string starts and ends in a non-space character.
     """
 
-    out = clean_location("  City, BC   ")
+    out = clean_location("  manitoba   ")
     assert not out.startswith(" "), "Output should not begin with a space."
     assert not out.endswith(" "), "Output should not end with a space."
 
@@ -51,19 +51,19 @@ def test_spaces_middle():
     Test that the output string does not have more than one space between characters.
     """
 
-    assert not re.search(r" {2,}", clean_location("Lots  of    spaces, BC"))
-    assert not re.search(r" {2,}", clean_location("NoSpaces, BC"))
-    assert not re.search(r" {2,}", clean_location("One Space, BC"))
+    assert not re.search(r" {2,}", clean_location("Newfoundland  and.   Labrador"))
+    assert not re.search(r" {2,}", clean_location("Newfoundlandandlabrador"))
+    assert not re.search(r" {2,}", clean_location("Newfoundland and Labrador"))
 
 def test_format():
     """
-    Test that the output is of the format '<any characters>, <two-letter code>'.
+    Test that the output is of the format '<two-letter code>'.
     """
 
-    assert re.match(r"^.+, [A-Z]{2}$", clean_location("My City British Columbia"))
-    assert re.match(r"^.+, [A-Z]{2}$", clean_location("My City, BC"))
-    assert re.match(r"^.+, [A-Z]{2}$", clean_location("My, Comma, City British Columbia"))
-    assert re.match(r"^.+, [A-Z]{2}$", clean_location("A British Columbia"))
+    assert re.match(r"^[A-Z]{2}$", clean_location("Ont."))
+    assert re.match(r"^[A-Z]{2}$", clean_location("New Brunswich"))
+    assert re.match(r"^[A-Z]{2}$", clean_location("Saskatchewan"))
+    assert re.match(r"^[A-Z]{2}$", clean_location("Yukon"))
 
 def test_output_type():
     """
@@ -94,9 +94,7 @@ def test_wrong_input_type():
 
 def test_incomplete_input():
     """
-    Test that incomplete inputs, i.e. inputs that do not contain both a province/territory 
-    and a municipality, throw a ValueError. There is some overlap between this test and
-    the test_unidentified_province_territory test.
+    Test that empty strings throw a ValueError.
     """
 
     with pytest.raises(ValueError):
@@ -104,12 +102,6 @@ def test_incomplete_input():
     
     with pytest.raises(ValueError):
         clean_location(" ")
-    
-    with pytest.raises(ValueError):
-        clean_location("BC")
-    
-    with pytest.raises(ValueError):
-        clean_location("My City")
 
 def test_unidentified_province_territory():
     """
@@ -118,55 +110,58 @@ def test_unidentified_province_territory():
     """
 
     with pytest.raises(ValueError):
-        clean_location("My City, XX")
+        clean_location("XX")
     
     with pytest.raises(ValueError):
-        clean_location("My City")
+        clean_location("C")
 
     with pytest.raises(ValueError):
-        clean_location("My City, Not A Province")
+        clean_location("Not A Province")
     
-    # significant typos will not match correctly
+    # significant abbreviations will not match correctly
     with pytest.raises(ValueError):
-        clean_location("My City, norht west terr")
+        clean_location("nt wt terr")
 
 def test_province_territory_replacement():
     """
-    Test that the function correctly matches various province/territory names and abbreviations to the
-    official two-letter code, including small typos.
+    Test that the function correctly matches various province/territory names and abbreviations to the official two-letter code, including small and medium typos.
     """
 
     testing_province_territory_replacement = {
-        "City british columbia": "City, BC", # function should be case insensitive
-        "City Manitoba": "City, MB",
-        "City Man.": "City, MB",
-        "City Ont.": "City, ON",
-        "Quebec City Quebec": "Quebec City, QC", # municipality name contains province/territory
-        "City P.E.I": "City, PE",
-        "City Sask.": "City, SK",
-        "City Nfld. Lab.": "City, NL", # multiple abbreviations for the same province/territory
-        "City N.B.": "City, NB", # punctuation around two-letter-code
-        "City Alberts": "City, AB" # small typos should be matched using fuzzy matching
+        "british columbia": "BC", # case insensitive
+        "Ont.": "ON", # periods at end
+        "P.E.I": "PE", # periods between letters
+        "Prince Edward Isl.": "PE", # uncommon abbreviations that are close enough to the full name
+        "Saskatch.": "SK", # uncommon abbreviations that are close enoguh to the full name
+        "Nfld. Lab.": "NL", # multiple abbreviations for the same province/territory
+        "Alberts": "AB", # small typos
+        "siskachwin": "SK", # medium typos
+        "north ws territry": "NT", # medium typos
+        "brit columbia": "BC", # unknown abbreviations
+        "newfoundlandandlabrador": "NL", # no spaces in text input
+        "newfoundland": "NL", # incomplete text input
     }
 
     for key, value in testing_province_territory_replacement.items():
         out = clean_location(key)
         assert out == value, f"Expected {value} but got {out}"
 
-def test_compass_directions_replacement():
+def test_same_distance_raises_error():
     """
-    Test that the compass direction replacement dictionary properly replaces abbreviated compass
-    directions and those with extra spaces.
+    Test that the function raises a ValueError if the input has equal
+    partial matches to two or more province/territories.
     """
+    with pytest.raises(ValueError):
+        clean_location("VB")
 
-    testing_compass_directions = {
-        "NW City, BC": "Northwest City, BC",
-        "South east City, BC": "Southeast City, BC",
-        "N City, BC": "North City, BC",
-        "W West City, BC": "West City, BC",
-        "Northeast City, BC": "Northeast City, BC"
-    }
-
-    for key, value in testing_compass_directions.items():
-        out = clean_location(key)
-        assert out == value, f"Expected {value} but got {out}"
+def test_significant_typos_raises_error():
+    """
+    Test that the function raises a ValueError for significant typos.
+    """
+    # significant typos should not match correctly
+    with pytest.raises(ValueError):
+        clean_location("alllbita")
+    with pytest.raises(ValueError):
+        clean_location("manto")
+    with pytest.raises(ValueError):
+        clean_location("b colum")

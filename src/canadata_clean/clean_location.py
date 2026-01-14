@@ -1,22 +1,43 @@
 from thefuzz import fuzz
 
-def clean_location(text: str) -> str:
-    """
-    Clean and validate a free-text entry representing a general location in Canada (municipality name and province or territory) entered in English and convert it to the format "MunicipalityName, TwoLetterProvinceOrTerritoryCode".
-    
-    The function accepts locations in a variety of formats, so long as the municipality name comes before the province/territory name in the string. First, it performs fuzzy matching (starting at the end of the string and moving backward) to identify the specified province or territory using a dictionary of province and territory names, including acronyms and shorthands. If a province or territory cannot be identified, the function will raise an error and require the user to add or modify the province or territory before proceeding. Once a province or territory has been identified, the string is sliced to remove the characters indicating the province or territory. The modified string is standardized to title case and appropriate white space, and compass directions are standardized using fuzzy matching to a dictionary. Note that there is no validation performed on the municipality name.
+"""
+names_and_abbreviations adapted from the following sources:
+https://en.wikipedia.org/wiki/Canadian_postal_abbreviations_for_provinces_and_territories
+https://www.noslangues-ourlanguages.gc.ca/en/writing-tips-plus/abbreviations-canadian-provinces-and-territories
+"""
+names_and_abbreviations = {
+    "AB": ["ab", "alberta", "alta.", "alb."],
+    "BC": ["bc", "british columbia", "c.-b."],
+    "MB": ["mb", "manitoba", "man."],
+    "NB": ["nb", "new brunswick", "n.-b."],
+    "NL": ["nl", "newfoundland and labrador", "nfld.", "lab.", "t.-n.-l.", "newfoundland", "labrador", "nfld. lab."],
+    "NT": ["nt", "northwest Ttrritories", "northwest territory", "north west territories", "north west territory", "nw territories", "nw territory", "n.w.t", "t.n.-o.", "nw"],
+    "NS": ["ns", "nova scotia", "n.-e"],
+    "NU": ["nu", "nunavut", "nvt.", "nt"],
+    "ON": ["on", "ontario", "ont."],
+    "PE": ["pe", "prince edward island", "prince edward", "p.e.i", "i.-p.-e."],
+    "QC": ["qc", "quebec", "que.", "pq"],
+    "SK": ["sk", "saskatchewan", "sask."],
+    "YT": ["yt", "yukon", "yuk.", "yn", "yk"]
+}
 
-    This program can only process English provinces/territories and municipalities, containing the 26 characters of the English alphabet. It cannot process French characters, including accents, and may not match French province/territory names correctly.
+def clean_location(text: str):
+    """
+    Identify a free-text entry representing a province or territory in Canada using fuzzy matching and return the two letter unique identifier.
+    
+    The function accepts a province or territory in a variety of English formats, including full spelling, common abbreviations, and minor misspellings. It performs fuzzy matching between the input string and a dictionary of province and territory names, acronyms, and shorthands. If a province or territory cannot be identified, the function will raise an error. 
+
+    This program can only process English text entries, containing the 26 characters of the English alphabet. It may not process French characters, including accents, and may not match French province/territory names correctly.
 
     Parameters
     ----------
     text : str
-        The input string representing a location, municipality and providence/territory, in Canada.
+        The input string representing a province/territory in Canada.
 
     Returns
     -------
     str
-        The cleaned and validated location.
+        The cleaned and validated province/territory.
 
     Raises
     ------
@@ -27,11 +48,11 @@ def clean_location(text: str) -> str:
 
     Examples
     --------
-    >>> clean_location("North Van British Columbia")
-    'North Vancouver, BC'
-    >>> clean_location("Not A City BC")
-    'Not A City, BC'
-    >>> clean_location("Vancouver BX")
+    >>> clean_location("British Columbia")
+    'BC'
+    >>> clean_location("B.C.")
+    'BC'
+    >>> clean_location("Not A Province")
     # Raises ValueError: Province or territory could not be identified.
     >>> clean_location(1)
     # Raises TypeError: Input is not a string.
@@ -39,57 +60,90 @@ def clean_location(text: str) -> str:
     if not isinstance(text, str):
         raise TypeError(f"Expected input to be str, got {type(text)}")
     
-    if not text.strip():
+    text = " ".join(text.split()).lower()
+
+    if not text:
         raise ValueError("Text cannot be empty.")
+    
+    return identify_province_territory(text)
 
-    return str()
+def remove_periods(text: str) -> str:
+    return text.replace(".", "")
 
-def standardize():
-    # strip spaces
-    # title case
-    return
+def remove_spaces(text: str) -> str:
+    return text.replace(" ", "")
 
-def identify_compass_directions():
+def normalize_names(names: dict, function) -> dict:
     """
-    compass_directions adapted from the following source:
-    https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/symbols-and-abbreviations.page
+    Apply a string transform to every abbreviation in the dictionary.
     """
-    compass_directions = {
-        "East": ["E"],
-        "North": ["N"],
-        "Northeast": ["NE", "Northeast", "North East"],
-        "Northwest": ["NW", "North West"],
-        "South": ["S"],
-        "Southeast": ["SE", "South East"],
-        "Southwest": ["SW", "South West"],
-        "West": ["W"]
-    }
-    return
-
-def identify_province_territory():
-    """
-    names_and_abbreviations adapted from the following sources:
-    https://en.wikipedia.org/wiki/Canadian_postal_abbreviations_for_provinces_and_territories
-    https://www.noslangues-ourlanguages.gc.ca/en/writing-tips-plus/abbreviations-canadian-provinces-and-territories
-    """
-    # check province/territory against list
-
-    names_and_abbreviations = {
-        "AB": ["Alberta", "Alta.", "Alb."],
-        "BC": ["British Columbia", "C.-B."],
-        "MB": ["Manitoba", "Man."],
-        "NB": ["New Brunswick", "N.-B."],
-        "NL": ["Newfoundland and Labrador", "Nfld.", "Lab.", "T.-N.-L."],
-        "NT": ["Northwest Territories", "Northwest Territory", "North West Territories", "North West Territory", "NW Territories", "NW Territory", "N.W.T", "T.N.-O."],
-        "NS": ["Nova Scotia", "N.-E"],
-        "NU": ["Nunavut", "Nvt.", "Nt"],
-        "ON": ["Ontario", "Ont."],
-        "PE": ["Prince Edward Island", "Prince Edward", "P.E.I", "I.-P.-E."],
-        "QC": ["Quebec", "Que.", "Qc", "PQ"],
-        "SK": ["Saskatchewan", "Sask."],
-        "YT": ["Yukon", "Yuk.", "Yn", "YK"]
+    return {
+        key: [function(v) for v in values]
+        for key, values in names.items()
     }
 
-    # add check here: if province/territory identified but no characters remaining, then throw valueerror for missing municipality
+def try_variation(text:str, function, threshold: int):
+    text = remove_periods(text)
+    names = normalize_names(names_and_abbreviations, function)
+    predictions = score_predictions(text, names)
+    max_key, max_value = get_max(predictions)
 
-    return
+    if isinstance(max_key, str) and max_value > threshold:
+        return max_key
+    else:
+        return "No Match"
+
+def try_variations(text:str , threshold: int):
+    result = try_variation(text, remove_periods, threshold)
+    if result != "No Match":
+        return result
+    
+    result = try_variation(text, remove_spaces, threshold)
+    if result != "No Match":
+        return result
+
+    predictions_partial = score_predictions(text, names_and_abbreviations, scorer = fuzz.partial_ratio)
+    max_key, max_value = get_max(predictions_partial)
+
+    # use a higher threshold for partial matches
+    if isinstance(max_key, str) and max_value > (threshold + ((100 - threshold) / 2)):
+        return max_key
+
+    raise ValueError(f"No unique province/territory identified for '{text}'.")
+
+def get_max(predictions: dict):
+    max_value = max(predictions.values())
+    max_keys = [k for k, v in predictions.items() if v == max_value]
+
+    if len(max_keys) > 1:
+        return max_keys, max_value
+    else:
+        return max_keys[0], max_value
+
+def identify_province_territory(text: str, threshold: int = 90):
+
+    predictions = score_predictions(text, names_and_abbreviations)
+    
+    max_value = max(predictions.values())
+    max_keys = [k for k, v in predictions.items() if v == max_value]
+
+    if max_value < 80:
+        return try_variations(text, threshold)
+    else:
+        if len(max_keys) == 1:
+            return max_keys[0]
+        else:
+            return try_variations(text, threshold)
+
+def score_predictions(text: str, names: dict, scorer = fuzz.ratio):
+    predictions = {}
+
+    for key, values in names.items():
+        best = 0
+        for item in values:
+            ratio = scorer(text, item)
+            if ratio > best:
+                best = ratio
+        predictions[key] = best
+
+    return predictions
