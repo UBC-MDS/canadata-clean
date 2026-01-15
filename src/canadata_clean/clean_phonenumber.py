@@ -35,19 +35,20 @@ def clean_phonenumber(text: str) -> str:
     """
 
     cleaned = ""
-    text = str(text)
+
+    if not isinstance(text, str):
+        raise ValueError("Phone number must be provided as a string.")
 
     for t in text:
         if t.isdigit():
             cleaned += t
 
     if len(cleaned) != 10:
-        raise ValueError ("Invalid phone number length")
+        raise ValueError ("Invalid phone number length: exactly 10 digits are required.")
     
-    elif len(cleaned) == 10:
-        area = cleaned[0:3]
-        extension = cleaned[3:6]
-        line = cleaned[6:]
-        output = "+1 (" + area + ") " + extension + "-" + line
+    area = cleaned[0:3]
+    extension = cleaned[3:6]
+    line = cleaned[6:]
+    output = f"+1 ({area}) {exchange}-{line}"
     
     return output
