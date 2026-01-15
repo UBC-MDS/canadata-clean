@@ -1,6 +1,6 @@
 import sys
 import re
-from datetime import datetime
+from datetime import date,datetime
 
 def clean_date(text: str, min_year: int = 1900, allow_future: bool = False) -> str:
     """
@@ -114,40 +114,46 @@ def clean_date(text: str, min_year: int = 1900, allow_future: bool = False) -> s
     >>> clean_date("not a date")  # Unparseable
     # Raises ValueError: Unable to parse date: 'not a date'.  Expected formats: YYYY-MM-DD, DD/MM/YYYY, or DD-MM-YYYY
     """
+    
+    if text is None or not isinstance(text, str) or not text.strip():
+        raise ValueError("Date string cannot be empty or None")
+    
+    # Normalize whitespace: strip leading/trailing, and remove spaces around / or -
+    text = text.strip()
+    text = re.sub(r'\s*/\s*', '/', text)
+    text = re.sub(r'\s*-\s*', '-', text)
+    
     formats = [
-    '%Y-%m-%d',    # 1990-05-15
-    '%d/%m/%Y',    # 15/05/1990
-    '%d-%m-%Y',    # 15-05-1990
+        '%Y-%m-%d',    # 1990-05-15
+        '%d/%m/%Y',    # 15/05/1990
+        '%d-%m-%Y',    # 15-05-1990
     ]
     
-    string = []
-    # clean whitespace literately 
-    for t in range(len(text)):
-        if text[t] not in (" \t\r\n"):
-            string.append(text[t])
-
-    #"15/05/1990"
     date_obj = None
-    clean_string = "".join(string)
-    for f in formats:
+    for fmt in formats:
         try:
-            date_obj = datetime.strptime(clean_string,f)
+            date_obj = datetime.strptime(text, fmt).date()
+            break
         except ValueError:
             continue
     if date_obj is None:
-        raise ValueError(f"Unable to parse date: '{text}'")
-
-    # It turns the different foramt of datatime string to "YYYY-MM-DD"
-    result = datetime.strftime(date_obj,formats[0])
+        raise ValueError(f"Unable to parse date: '{text}'. Expected formats: YYYY-MM-DD, DD/MM/YYYY, or DD-MM-YYYY")
     
-    return result
+    # Check year
+    if date_obj.year < min_year:
+        raise ValueError(f"Date year {date_obj.year} is below minimum allowed year {min_year}")
+    
+    # Check future
+    today = date.today()
+    if not allow_future and date_obj > today:
+        raise ValueError(f"Date cannot be in the future: {date_obj} is after {today}")
+    
+    return date_obj.isoformat()
     
 
-if __name__ == "__main__":
-    # sys.argv[0] is the script name itself (process_data.py)
-    # sys.argv[1] is the first argument provided by the user
-    if len(sys.argv) > 1:
-        user_input = sys.argv[1]
-        print(clean_date(user_input))
-    else:
-        print("Please provide a name as a command-line argument.")
+# if __name__ == "__main__":
+#     if len(sys.argv) > 1:
+#         user_input = sys.argv[1]
+#         print(clean_date(user_input))
+#     else:
+#         print("Please provide a date string as a command-line argument.")
