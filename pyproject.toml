@@ -36,7 +36,9 @@ classifiers = [
 # TODO: add keywords
 keywords = []
 # TODO: add dependencies
-dependencies = []
+dependencies = [
+    "thefuzz>=0.22.1"
+]
 
 [project.urls]
 Homepage = "https://github.com/kessler24/canadata-clean"

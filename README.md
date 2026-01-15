@@ -41,7 +41,7 @@ This function cleans and validates a Canadian postal code string field to ensure
 ```python
 clean_location(location)
 ```
-This function cleans and validates a free-text entry representing a general location (municipality name and province or territory) in Canada and convert it to the format "MunicipalityName, TwoLetterProvinceOrTerritoryCode"
+This function cleans and validates a free-text entry representing Canadian province or territory and returns the two letter province or territory code, e.g. "BC" for "British Columbia".
 
 ```python
 clean_phonenumber(phone_number)
