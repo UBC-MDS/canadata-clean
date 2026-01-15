@@ -26,6 +26,4 @@ Add a docstring here for the init module.
 
 This might include a very brief description of the package,
 its purpose, and any important notes.
-"""
-from canadata_clean.clean_phonenumber import clean_phonenumber
-__all__ = ["clean_phonenumber"]
+"""]
