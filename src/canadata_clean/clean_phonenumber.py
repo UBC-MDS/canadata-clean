@@ -18,7 +18,8 @@ def clean_phonenumber(text: str) -> str:
     ------
     ValueError
         If the input does not contain exactly 10 digits.
-    
+    TypeError
+       The input must be provided as a string.
 
     Examples
     --------
@@ -28,16 +29,18 @@ def clean_phonenumber(text: str) -> str:
     '+1 (123) 456-7890'
     >>> clean_phonenumber("(123) 456-7890")
     '+1 (123) 456-7890'
-    >>> clean_phonenumber("123 456 7890")
+    >>> clean_phonenumber(" 123 456 7890 ")
     '+1 (123) 456-7890'
     >>> clean_phonenumber("123456")
     # Raises ValueError: Invalid phone number length
+    >>> clean_phonenumber(1234567890)
+    # Raises TypeError: Phone number must be provided as a string
     """
 
     cleaned = ""
 
     if not isinstance(text, str):
-        raise ValueError("Phone number must be provided as a string.")
+        raise TypeError("Phone number must be provided as a string.")
 
     for t in text:
         if t.isdigit():
