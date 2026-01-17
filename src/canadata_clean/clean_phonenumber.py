@@ -2,7 +2,7 @@ def clean_phonenumber(text: str) -> str:
     """
     Clean and validate a free-text entry phone number and convert it to the standard Canadian format "+1 (XXX) XXX-XXXX".
 
-    The function accepts phone number in a variety of formats, including with or without parentheses, spaces, dashes, or a Canadian country code. 
+    The function accepts phone number in a variety of formats, including with or without parentheses, spaces, dashes. 
 
     Parameters
     ----------
@@ -17,20 +17,41 @@ def clean_phonenumber(text: str) -> str:
     Raises
     ------
     ValueError
-        If the input does not contain exactly 10 digits (excluding the country code).
-    
+        If the input does not contain exactly 10 digits.
+    TypeError
+       The input must be provided as a string.
 
     Examples
     --------
-    >>> clean_phonenumber("1-123-456-7890")
+    >>> clean_phonenumber("123-456-7890")
     '+1 (123) 456-7890'
     >>> clean_phonenumber("1234567890")
     '+1 (123) 456-7890'
     >>> clean_phonenumber("(123) 456-7890")
     '+1 (123) 456-7890'
-    >>> clean_phonenumber("123 456 7890")
+    >>> clean_phonenumber(" 123 456 7890 ")
     '+1 (123) 456-7890'
     >>> clean_phonenumber("123456")
     # Raises ValueError: Invalid phone number length
+    >>> clean_phonenumber(1234567890)
+    # Raises TypeError: Phone number must be provided as a string
     """
 
+    cleaned = ""
+
+    if not isinstance(text, str):
+        raise TypeError("Phone number must be provided as a string.")
+
+    for t in text:
+        if t.isdigit():
+            cleaned += t
+
+    if len(cleaned) != 10:
+        raise ValueError ("Invalid phone number length: exactly 10 digits are required.")
+    
+    area = cleaned[0:3]
+    extension = cleaned[3:6]
+    line = cleaned[6:]
+    output = f"+1 ({area}) {extension}-{line}"
+    
+    return output
