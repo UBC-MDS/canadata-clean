@@ -136,7 +136,7 @@ def clean_date(text: str, min_year: int = 1900, allow_future: bool = False) -> s
         except ValueError:
             continue
     if date_obj is None:
-        raise ValueError(f"Unable to parse date: '{text}'. Expected formats: YYYY-MM-DD, DD/MM/YYYY, or DD-MM-YYYY")
+        raise ValueError(f"Unable to parse date: {text}. Expected formats: YYYY-MM-DD, DD/MM/YYYY, or DD-MM-YYYY")
     
     # Check year
     if date_obj.year < min_year:
