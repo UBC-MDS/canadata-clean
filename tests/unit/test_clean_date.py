@@ -48,7 +48,7 @@ def test_year_and_future_validations():
         clean_date("1850-05-15", min_year=1900)
     # Future date not allowed (default)
     with pytest.raises(ValueError, match="Date cannot be in the future"):
-        clean_date("2030-01-01")
+        clean_date("2035-01-01")
     # Future date allowed
     assert clean_date("2030-01-01", allow_future=True) == "2030-01-01"
 

@@ -29,7 +29,7 @@ def test_clean_postalcode():
 
     # Invalid postal codes
     with pytest.raises(TypeError, match="Expected a string but got"):
-        clean_postalcode(123456)
+        clean_postalcode(123457)
 
     with pytest.raises(ValueError, match="Invalid Canadian postal code prefix: Z"):
         clean_postalcode("Z5K0A1")
