@@ -29,7 +29,7 @@ def test_clean_phonenumber():
 
     #Invalid Input
     with pytest.raises(ValueError):
-        clean_phonenumber("123456")
+        clean_phonenumber("123457")
     with pytest.raises(TypeError):
         clean_phonenumber(1234567890)
     with pytest.raises(ValueError):

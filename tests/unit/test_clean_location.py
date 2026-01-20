@@ -127,7 +127,7 @@ def province_territory_replacement():
         "north ws territry": "NT", # medium typos
         "brit columbia": "BC", # unknown abbreviations
         "newfoundlandandlabrador": "NL", # no spaces in text input
-        "newfoundland": "NL", # incomplete text input
+        "newfoundland ": "NL", # incomplete text input
         "qc": "QC", # minimum valid input
         "Prince-Edward-Island": "PE", # hyphens between letters
         "Newfoundland & Labrador": "NL" # other punctuation
