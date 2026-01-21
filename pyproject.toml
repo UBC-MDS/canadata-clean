@@ -191,12 +191,6 @@ check = ["pip-audit"]
 branch = "main"
 version_source = "tag"
 tag_format = "{version}"
-commit_parser = "semantic_release.commit_parser.conventional:ConventionalCommitParser"
-
-[tool.semantic_release.commit_parser_options]
-allowed_tags = ["feat", "fix", "perf", "refactor", "chore"]
-minor_tags = ["feat"]
-patch_tags = ["fix", "perf"]
 
 [tool.hatch.version]
 source = "vcs"
