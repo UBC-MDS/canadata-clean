@@ -200,3 +200,8 @@ patch_tags = ["fix", "perf"]
 
 [tool.hatch.version]
 source = "vcs"
+
+[tool.semantic_release.branches.dev]
+match = "update_build_deploy"
+prerelease = true
+prerelease_token = "alpha"
