@@ -49,7 +49,7 @@ def spaces_sides():
     Test that the output string starts and ends in a non-space character.
     """
 
-    out = clean_location("  manitoba   ")
+    out = clean_location("  manitoba    ")
     assert not out.startswith(" "), "Output should not begin with a space."
     assert not out.endswith(" "), "Output should not end with a space."
 
