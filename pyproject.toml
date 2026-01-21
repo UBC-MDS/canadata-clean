@@ -4,7 +4,7 @@
 
 [build-system]
 build-backend = "hatchling.build"
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 
 ################################################################################
 # Project Configuration
@@ -33,9 +33,9 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",
 ]
-# TODO: add keywords
+# Add keywords
 keywords = []
-# TODO: add dependencies
+# Add dependencies
 dependencies = [
     "thefuzz>=0.22.1"
 ]
