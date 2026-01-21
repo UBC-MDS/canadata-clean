@@ -20,7 +20,7 @@ A package to perform common cleaning operations on free-text entry Personal Info
 focused on Canadian information formats.
 """
 authors = [
-    { name = "Molly Kessler" },
+    { name = "Molly Kessler, Raymond Wang, Sasha S, Randall Lee" },
 ]
 license = "MIT"
 requires-python = ">= 3.10" # Adjust based on the minimum version of Python that you support
