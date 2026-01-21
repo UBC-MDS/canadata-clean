@@ -13,7 +13,7 @@ requires = ["hatchling"]
 [project]
 name = "canadataClean"
 # You can chose to use dynamic versioning with hatch or static where you add it manually.
-version = "0.1.0"
+dynamic = ["version"]
 
 description = """
 A package to perform common cleaning operations on free-text entry Personal Information,
@@ -186,3 +186,16 @@ features = [
 
 [tool.hatch.envs.audit.scripts]
 check = ["pip-audit"]
+
+#--------------- Add semantic-release configuration ---------------#
+
+[tool.semantic_release]
+branch = "main"
+version_source = "tag"
+tag_format = "{version}"
+commit_parser = "conventional"
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = ["feat", "fix", "perf", "refactor", "chore"]
+minor_tags = ["feat"]
+patch_tags = ["fix", "perf"]
