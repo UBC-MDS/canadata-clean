@@ -1,0 +1,12 @@
+website:
+  sidebar:
+  - contents:
+    - reference/index.qmd
+    - contents:
+      - reference/clean_date.qmd
+      - reference/clean_location.qmd
+      - reference/clean_phonenumber.qmd
+      - reference/clean_postalcode.qmd
+      section: Functions for canadataClean package
+    id: reference
+  - id: dummy-sidebar

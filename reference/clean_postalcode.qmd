@@ -1,0 +1,55 @@
+# clean_postalcode { #canadataClean.clean_postalcode }
+
+`clean_postalcode`
+
+
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [clean_postalcode](#canadataClean.clean_postalcode.clean_postalcode) | Clean and validate a free-text entry representing a Canadian postal code and convert it to the standard Canadian postal code format "A1A 1A1". |
+
+### clean_postalcode { #canadataClean.clean_postalcode.clean_postalcode }
+
+```python
+clean_postalcode.clean_postalcode(postal_code, region=None)
+```
+
+Clean and validate a free-text entry representing a Canadian postal code and convert it to the standard Canadian postal code format "A1A 1A1".
+
+The function accepts postal codes in a variety of formats, including with or without spaces, dashes, or lowercase letters. It first removes extraneous characters and normalizes the string to uppercase. If a `region` is provided, the function checks that the postal code matches the expected prefix for that province or territory. The postal code is then reformatted to the standard "A1A 1A1" format. If the postal code is invalid or does not match the specified region, a ValueError is raised.
+
+Postal code address guidelines reference: https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/postal-codes.page
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name        | Type   | Description                                                                                                                       | Default    |
+|-------------|--------|-----------------------------------------------------------------------------------------------------------------------------------|------------|
+| postal_code | str    | The input string representing a Canadian postal code.                                                                             | _required_ |
+| region      | str    | The Canadian province or territory to validate the postal code against (default is None, which skips region-specific validation). | `None`     |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                      |
+|--------|--------|------------------------------------------------------------------|
+|        | str    | The validated Canadian postal code in standard "A1A 1A1" format. |
+
+#### Raises {.doc-section .doc-section-raises}
+
+| Name   | Type       | Description                                                                                                                          |
+|--------|------------|--------------------------------------------------------------------------------------------------------------------------------------|
+|        | ValueError | If the input does not match a valid Canadian postal code pattern, or if it does not match the specified region's postal code prefix. |
+
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> clean_postalcode("K1A0B1")
+'K1A 0B1'
+>>> clean_postalcode("k1a 0b1", region="ON")
+'K1A 0B1'
+>>> clean_postalcode("V5K0A1", region="ON")
+# Raises ValueError: Postal code does not match the specified region
+>>> clean_postalcode("12345")
+# Raises ValueError: Invalid Canadian postal code
+```

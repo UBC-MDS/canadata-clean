@@ -1,30 +1,48 @@
 project:
   type: website
+  output-dir: _site
 
-# tell quarto to read the generated sidebar
-metadata-files:
-  - reference/_sidebar.yml
+website:
+  title:  "canadataClean Documentation"
+  description: "Python package for cleaning and validating Canada-specific data"
+  repo-url: https://github.com/UBC-MDS/canadataClean
+  
+  navbar:
+    title: "canadataClean"
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Reference"
+        href:  reference/index.qmd
+    right:
+      - icon:  github
+        href: https://github.com/UBC-MDS/canadataClean
 
-# tell quarto to read the generated styles
+  sidebar: 
+    - title: "Functions"
+      contents:
+        - reference/index.qmd
+        - section: "Available Functions"
+          contents:
+            - reference/clean_date.qmd
+            - reference/clean_location.qmd
+            - reference/clean_phonenumber.qmd
+            - reference/clean_postalcode.qmd
+
 format:
   html:
-    css:
-      - reference/_styles-quartodoc.css
+    theme:  cosmo
+    toc: true
+    code-copy: true
 
-quartodoc:
-  # the name used to import the package you want to create reference docs for
+quartodoc: 
+  style: pkgdown
+  dir: reference
   package: canadataClean
-
-  # write sidebar and style data
-  sidebar: reference/_sidebar.yml
-  css: reference/_styles-quartodoc.css
-
   sections:
-    - title: Functions for canadataClean package
-      desc: This page shows each public function in canadataClean, its docstring, and a short runnable example. If you are using the repository directly, install the package in editable mode first
+    - title: "Data Cleaning Functions"
+      desc: "Core functions for cleaning and validating Canadian data"
       contents:
-        # the functions being documented in the package.
-        # you can refer to anything: class methods, modules, etc..
         - clean_date
         - clean_location
         - clean_phonenumber

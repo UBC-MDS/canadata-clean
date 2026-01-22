@@ -1,0 +1,8 @@
+---
+title: "canadataClean"
+subtitle: "Python package for collection of utility functions to clean and validate Canada-specific data"
+---
+
+## Welcome to canadataClean Documentation
+
+{{< include README.md >}}

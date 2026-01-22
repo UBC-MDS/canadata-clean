@@ -1,0 +1,259 @@
+# clean_location { #canadataClean.clean_location }
+
+`clean_location`
+
+
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [clean_location](#canadataClean.clean_location.clean_location) | Identify a free-text entry representing a province or territory in Canada using fuzzy matching and return the two letter unique identifier. |
+| [get_max](#canadataClean.clean_location.get_max) | Identify the key(s) associated with the maximum value in a dictionary. |
+| [normalize_names](#canadataClean.clean_location.normalize_names) | Apply a string normalization function to all values in a mapping. |
+| [remove_punctuation](#canadataClean.clean_location.remove_punctuation) | Remove all ASCII punctuation characters from a string. |
+| [remove_spaces](#canadataClean.clean_location.remove_spaces) | Remove all space characters from a string. |
+| [score_predictions](#canadataClean.clean_location.score_predictions) | Compute fuzzy matching scores between an input string and reference dictionary. |
+| [try_variation](#canadataClean.clean_location.try_variation) | Attempt to identify a province or territory using a specific normalization strategy. |
+| [try_variations](#canadataClean.clean_location.try_variations) | Attempt multiple normalization and fuzzy-matching strategies in sequence. |
+
+### clean_location { #canadataClean.clean_location.clean_location }
+
+```python
+clean_location.clean_location(text, threshold=85)
+```
+
+Identify a free-text entry representing a province or territory in Canada using fuzzy matching and return the two letter unique identifier.
+
+The function accepts a province or territory in a variety of English formats, including full spelling, common abbreviations, and minor misspellings. It performs fuzzy matching between the input string and a dictionary of province and territory names, acronyms, and shorthands. If a province or territory cannot be identified, the function will raise an error. 
+
+This program can only process English text entries, containing the 26 characters of the English alphabet. It may not process French characters, including accents, and may not match French province/territory names correctly.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name      | Type   | Description                                                                                          | Default    |
+|-----------|--------|------------------------------------------------------------------------------------------------------|------------|
+| text      | str    | The input string representing a province/territory in Canada.                                        | _required_ |
+| threshold | int    | The baseline cutoff threshold for accepting a fuzzy match, up to 100 (perfect match). Default is 85. | `85`       |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                   |
+|--------|--------|-----------------------------------------------|
+|        | str    | The cleaned and validated province/territory. |
+
+#### Raises {.doc-section .doc-section-raises}
+
+| Name   | Type       | Description                                                                 |
+|--------|------------|-----------------------------------------------------------------------------|
+|        | ValueError | If a valid Canadian province/territory cannot be identified from the input. |
+|        | TypeError  | If the input is not a string.                                               |
+
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> clean_location("British Columbia")
+'BC'
+>>> clean_location("B.C.")
+'BC'
+>>> clean_location("Not A Province")
+# Raises ValueError: Province or territory could not be identified.
+>>> clean_location(1)
+# Raises TypeError: Input is not a string.
+```
+
+### get_max { #canadataClean.clean_location.get_max }
+
+```python
+clean_location.get_max(predictions)
+```
+
+Identify the key(s) associated with the maximum value in a dictionary.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name        | Type   | Description                                | Default    |
+|-------------|--------|--------------------------------------------|------------|
+| predictions | dict   | Dictionary mapping keys to numeric scores. | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                                                                                |
+|--------|--------|----------------------------------------------------------------------------------------------------------------------------|
+|        | tuple  | If a unique maximum exists, returns (key, value). If multiple keys share the maximum value, returns (list_of_keys, value). |
+
+### normalize_names { #canadataClean.clean_location.normalize_names }
+
+```python
+clean_location.normalize_names(names, function)
+```
+
+Apply a string normalization function to all values in a mapping.
+
+This helper applies a transformation (e.g., removing punctuation or spaces)
+to every abbreviation or name associated with each province or territory in
+the names_and_abbreviations dictionary.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name     | Type     | Description                                                            | Default    |
+|----------|----------|------------------------------------------------------------------------|------------|
+| names    | dict     | Dictionary mapping province/territory codes to lists of name variants. | _required_ |
+| function | callable | A function that takes a string and returns a transformed string.       | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                              |
+|--------|--------|--------------------------------------------------------------------------|
+|        | dict   | A new dictionary with the same keys as ``names`` and transformed values. |
+
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> normalize_names({"ON": ["ont.", "ontario"]}, remove_punctuation)
+{'ON': ['ont', 'ontario']}
+```
+
+### remove_punctuation { #canadataClean.clean_location.remove_punctuation }
+
+```python
+clean_location.remove_punctuation(text)
+```
+
+Remove all ASCII punctuation characters from a string.
+
+This function strips characters defined in ``string.punctuation`` while
+preserving letters, numbers, and whitespace. It is used as a normalization
+step prior to fuzzy matching, in the event that significant punctuation prevented
+a match in the first round of matching.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name   | Type   | Description                | Default    |
+|--------|--------|----------------------------|------------|
+| text   | str    | Input string to normalize. | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                    |
+|--------|--------|------------------------------------------------|
+|        | str    | The input string with all punctuation removed. |
+
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> remove_punctuation("P.E.I.")
+'PEI'
+```
+
+### remove_spaces { #canadataClean.clean_location.remove_spaces }
+
+```python
+clean_location.remove_spaces(text)
+```
+
+Remove all space characters from a string.
+
+This function is used to handle inputs where province or territory names
+may be concatenated without spaces and previous fuzzy matching attempts
+have not found a match.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name   | Type   | Description                | Default    |
+|--------|--------|----------------------------|------------|
+| text   | str    | Input string to normalize. | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                               |
+|--------|--------|-------------------------------------------|
+|        | str    | The input string with all spaces removed. |
+
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> remove_spaces("newfoundland and labrador")
+'newfoundlandandlabrador'
+```
+
+### score_predictions { #canadataClean.clean_location.score_predictions }
+
+```python
+clean_location.score_predictions(text, names, scorer=fuzz.ratio)
+```
+
+Compute fuzzy matching scores between an input string and reference dictionary.
+
+For each province or territory, the highest fuzzy match score across all
+associated name variants is retained.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name   | Type     | Description                                                            | Default      |
+|--------|----------|------------------------------------------------------------------------|--------------|
+| text   | str      | Input string to match.                                                 | _required_   |
+| names  | dict     | Dictionary mapping province/territory codes to lists of name variants. | _required_   |
+| scorer | callable | Fuzzy matching function from ``thefuzz`` (default is ``fuzz.ratio``).  | `fuzz.ratio` |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                            |
+|--------|--------|------------------------------------------------------------------------|
+|        | dict   | Dictionary mapping province/territory codes to their best match score. |
+
+### try_variation { #canadataClean.clean_location.try_variation }
+
+```python
+clean_location.try_variation(text, function, threshold)
+```
+
+Attempt to identify a province or territory using a specific normalization strategy.
+
+This applies the specified function to both the input text and the names dictionary, then scores fuzzy matches against the dictionary.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name      | Type     | Description                                                                    | Default    |
+|-----------|----------|--------------------------------------------------------------------------------|------------|
+| text      | str      | Input string.                                                                  | _required_ |
+| function  | callable | A normalization function applied to the input string and the names dictionary. | _required_ |
+| threshold | int      | Minimum fuzzy match score required to accept a result.                         | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                                                            |
+|--------|--------|--------------------------------------------------------------------------------------------------------|
+|        | str    | The identified province/territory code if a confident match is found, otherwise the string "No Match". |
+
+### try_variations { #canadataClean.clean_location.try_variations }
+
+```python
+clean_location.try_variations(text, threshold)
+```
+
+Attempt multiple normalization and fuzzy-matching strategies in sequence.
+
+This function tries increasingly permissive matching approaches, including
+punctuation removal, space removal, and partial fuzzy matching. It raises
+an error if no unique province or territory can be identified after all three
+matching strategies.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name      | Type   | Description                    | Default    |
+|-----------|--------|--------------------------------|------------|
+| text      | str    | Normalized input string.       | _required_ |
+| threshold | int    | Base fuzzy matching threshold. | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                             |
+|--------|--------|-----------------------------------------|
+|        | str    | The identified province/territory code. |
+
+#### Raises {.doc-section .doc-section-raises}
+
+| Name   | Type       | Description                                           |
+|--------|------------|-------------------------------------------------------|
+|        | ValueError | If no unique province or territory can be identified. |

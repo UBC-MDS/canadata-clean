@@ -1,0 +1,12 @@
+# Function reference {.doc .doc-index}
+
+## Functions for canadataClean package
+
+This page shows each public function in canadataClean, its docstring, and a short runnable example. If you are using the repository directly, install the package in editable mode first
+
+| | |
+| --- | --- |
+| [clean_date](clean_date.qmd#canadataClean.clean_date) |  |
+| [clean_location](clean_location.qmd#canadataClean.clean_location) |  |
+| [clean_phonenumber](clean_phonenumber.qmd#canadataClean.clean_phonenumber) |  |
+| [clean_postalcode](clean_postalcode.qmd#canadataClean.clean_postalcode) |  |

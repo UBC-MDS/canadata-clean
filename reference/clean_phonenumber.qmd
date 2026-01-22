@@ -1,0 +1,57 @@
+# clean_phonenumber { #canadataClean.clean_phonenumber }
+
+`clean_phonenumber`
+
+
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [clean_phonenumber](#canadataClean.clean_phonenumber.clean_phonenumber) | Clean and validate a free-text entry phone number and convert it to the standard Canadian format "+1 (XXX) XXX-XXXX". |
+
+### clean_phonenumber { #canadataClean.clean_phonenumber.clean_phonenumber }
+
+```python
+clean_phonenumber.clean_phonenumber(text)
+```
+
+Clean and validate a free-text entry phone number and convert it to the standard Canadian format "+1 (XXX) XXX-XXXX".
+
+The function accepts phone number in a variety of formats, including with or without parentheses, spaces, dashes. 
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name   | Type   | Description                                            | Default    |
+|--------|--------|--------------------------------------------------------|------------|
+| text   | str    | The input string representing a Canadian phone number. | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                                 |
+|--------|--------|-----------------------------------------------------------------------------|
+| text   | str    | The validated Canadian phone number in standard "+1 (XXX) XXX-XXXX" format. |
+
+#### Raises {.doc-section .doc-section-raises}
+
+| Name   | Type       | Description                                      |
+|--------|------------|--------------------------------------------------|
+|        | ValueError | If the input does not contain exactly 10 digits. |
+|        | TypeError  | The input must be provided as a string.          |
+
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> clean_phonenumber("123-456-7890")
+'+1 (123) 456-7890'
+>>> clean_phonenumber("1234567890")
+'+1 (123) 456-7890'
+>>> clean_phonenumber("(123) 456-7890")
+'+1 (123) 456-7890'
+>>> clean_phonenumber(" 123 456 7890 ")
+'+1 (123) 456-7890'
+>>> clean_phonenumber("123456")
+# Raises ValueError: Invalid phone number length
+>>> clean_phonenumber(1234567890)
+# Raises TypeError: Phone number must be provided as a string
+```
