@@ -1,8 +1,8 @@
 # canadataClean
 
 |  |  |
-|------------------------------------|------------------------------------|
-| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/canadataClean.svg)](https://pypi.org/project/canadataClean/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/canadataClean.svg)](https://pypi.org/project/canadataClean/) |
+|----|----|
+| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/canadataClean.svg)](https://test.pypi.org/project/canadataClean/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/canadataClean.svg)](https://test.pypi.org/project/canadataClean/) |
 | Meta | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
 canadataClean provides a collection of utility functions for cleaning and validating Canada-specific structured data in pandas DataFrames. The package is designed to help users efficiently standardize common Canadian data fields while identifying invalid or problematic entries.
