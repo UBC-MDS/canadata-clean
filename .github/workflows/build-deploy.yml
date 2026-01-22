@@ -38,57 +38,57 @@ jobs:
           python -m pip install ruff
           ruff check .
 
-  docs:
-    runs-on: ubuntu-latest
+  # docs:
+  #   runs-on: ubuntu-latest
     
-    # Only run if build passes and on main branch pushes
-    needs:  build
-    # if: github.event_name == 'push' && github. ref == 'refs/heads/main'
+  #   # Only run if build passes and on main branch pushes
+  #   needs:  build
+  #   # if: github.event_name == 'push' && github. ref == 'refs/heads/main'
     
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
+  #   permissions:
+  #     contents: read
+  #     pages: write
+  #     id-token: write
     
-    steps:
-      - name:  Checkout repository
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name:  Checkout repository
+  #       uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: '3.12'
           
-      - name: Install Python dependencies
-        run:  |
-          pip install -e . 
-          pip install quartodoc
+  #     - name: Install Python dependencies
+  #       run:  |
+  #         pip install -e . 
+  #         pip install quartodoc
 
-      - name:  Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+  #     - name:  Set up Quarto
+  #       uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Generate API docs with quartodoc
-        run: |
-          quartodoc build
+  #     - name: Generate API docs with quartodoc
+  #       run: |
+  #         quartodoc build
 
-      - name:  Render Quarto Project
-        run: |
-          quarto render
+  #     - name:  Render Quarto Project
+  #       run: |
+  #         quarto render
 
-      - name: Setup Pages
-        uses:  actions/configure-pages@v3
+  #     - name: Setup Pages
+  #       uses:  actions/configure-pages@v3
         
-      - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v2
-        with:  
-          path:  . /_site
+  #     - name: Upload to GitHub Pages
+  #       uses: actions/upload-pages-artifact@v2
+  #       with:  
+  #         path:  . /_site
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
-        environment:
-          name: github-pages
-          url: ${{ steps.deployment. outputs.page_url }}
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v2
+  #       environment:
+  #         name: github-pages
+  #         url: ${{ steps.deployment. outputs.page_url }}
 
   deploy:
     permissions:
