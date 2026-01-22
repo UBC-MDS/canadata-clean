@@ -1,9 +1,9 @@
 # canadataClean
 
-|        |        |
-|--------|--------|
-| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/canadataClean.svg)](https://pypi.org/project/canadataClean/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/canadataClean.svg)](https://pypi.org/project/canadataClean/)  |
-| Meta   | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
+|  |  |
+|------------------------------------|------------------------------------|
+| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/canadataClean.svg)](https://test.pypi.org/project/canadataClean/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/canadataClean.svg)](https://test.pypi.org/project/canadataClean/) |
+| Meta | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
 canadataClean provides a collection of utility functions for cleaning and validating Canada-specific structured data in pandas DataFrames. The package is designed to help users efficiently standardize common Canadian data fields while identifying invalid or problematic entries.
 
@@ -15,50 +15,112 @@ When a value does not meet the required Canadian format, canadataClean raises a 
 
 ## Get started
 
+### Installation
+
+To reproduce the environment, run:
+
+``` bash
+conda env create -f environment.yml
+conda activate canadataClean
+```
+
 You can install this package into your preferred Python environment using pip:
 
-```bash
+``` bash
 $ pip install canadataClean
 ```
 
 To use canadataClean in your code:
 
-```python
+``` python
 from canadataClean import clean_date, clean_location, clean_phonenumber, clean_postalcode
 ```
 
 ### Functions
-```python
+
+``` python
 clean_date(date)
 ```
+
 This function cleans and validates a date string, converting common formats to the Canadian standard YYYY-MM-DD (ISO 8601).
 
-```python
+``` python
 clean_postalcode(postal_code)
 ```
+
 This function cleans and validates a Canadian postal code string field to ensure that it matches the Canadian postal code format (e.g., "A1A 1A1").
 
-```python
+``` python
 clean_location(location)
 ```
+
 This function cleans and validates a free-text entry representing Canadian province or territory and returns the two letter province or territory code, e.g. "BC" for "British Columbia".
 
-```python
+``` python
 clean_phonenumber(phone_number)
 ```
+
 This function cleans and validates a phone number string field to ensure that it matches the Canadian phone number format ("+1 (XXX) XXX-XXXX").
 
 ## To run the tests
 
 You can run the tests for this package using `pytest`. First, install the testing dependencies:
 
-```bash
+``` bash
 $ pip install -e.[test]
 ```
 
 Then, run the tests with:
-```
+
+```         
 $ pytest
+```
+
+To view the test coverage, run the following command:
+
+```         
+$ pytest --cov=src/canadata_clean
+```
+
+## Documentation
+
+The online documentation for this package can be found [here.](https://ubc-mds.github.io/canadataClean/)
+
+To generate and preview the reference documentation, use the following command:
+
+``` bash
+quartodoc build --watch
+quarto preview
+```
+
+## Usage
+
+1.  Standardizing Dates: The clean_date function standardizes a string to the Canadian format YYYY-MM-DD (ISO 8601)
+
+``` python
+from canadataClean.clean_date import clean_date
+clean_date = clean_date("date") # Replace date with the actual date
+```
+
+2.  Standardizing Postal Code: The clean_postalcode function standardizes a string to the Canadian postal code format (e.g., "A1A 1A1")
+
+``` python
+from canadataClean.clean_postalcode import clean_postalcode
+clean_postalcode = clean_postalcode("postal_code") # Replace postal_code with the actual postal_code
+```
+
+3.  Standardizing Provinces and Territories: The clean_location function standardizes a string to the two letter province or territory code (e.g. "BC" for "British Columbia")
+
+``` python
+from canadataClean.clean_location import clean_location
+clean_location = clean_location("location") # Replace location with the actual province or territory
+```
+
+4.  Standardizing Phone Number: The clean_phonenumber function standardizes a string to the Canadian phone number format ("+1 (XXX) XXX-XXXX")
+
+``` python
+from canadataClean.clean_phonenumber import clean_phonenumber
+clean_phonenumber = clean_phonenumber("phone_number") # Replace phone number with the actual phone number
 ```
 
 ## Where This Fits in the Python Ecosystem
@@ -68,13 +130,15 @@ canadataClean fits into the broader Python data processing and data quality ecos
 The package specializes in Canada-specific data standardization and validation, including postal codes, phone numbers, provinces, cities, and date formats. Unlike more general or schema-heavy validation libraries, canadataClean offers simple, string-based utility functions that can be easily integrated into existing pandas workflows. It is designed for users who need fast, consistent cleaning of Canadian datasets without configuring complex validation pipelines, making it well-suited for practical data preparation and preprocessing tasks.
 
 ### Dependencies
-- [python == 3.13.7](https://www.python.org/downloads/release/python-3137/)
+
+-   [python == 3.13.7](https://www.python.org/downloads/release/python-3137/)
 
 ## Contributors
-- Molly Kessler
-- Raymond Wang
-- Sasha S
-- Randall Lee
+
+-   Molly Kessler
+-   Raymond Wang
+-   Sasha S
+-   Randall Lee
 
 ## Contributing
 
