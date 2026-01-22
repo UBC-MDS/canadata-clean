@@ -1,6 +1,7 @@
 from thefuzz import fuzz
 import string
 
+__all__ = ["clean_location"]
 """
 The data for names_and_abbreviations was adapted from the following sources:
 https://en.wikipedia.org/wiki/Canadian_postal_abbreviations_for_provinces_and_territories

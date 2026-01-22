@@ -1,16 +1,4 @@
-# clean_location { #canadataClean.clean_location }
-
-`clean_location`
-
-
-
-## Functions
-
-| Name | Description |
-| --- | --- |
-| [clean_location](#canadataClean.clean_location.clean_location) | Identify a free-text entry representing a province or territory in Canada using fuzzy matching and return the two letter unique identifier. |
-
-### clean_location { #canadataClean.clean_location.clean_location }
+# clean_location.clean_location { #canadataClean.clean_location.clean_location }
 
 ```python
 clean_location.clean_location(text, threshold=85)
@@ -22,27 +10,27 @@ The function accepts a province or territory in a variety of English formats, in
 
 This program can only process English text entries, containing the 26 characters of the English alphabet. It may not process French characters, including accents, and may not match French province/territory names correctly.
 
-#### Parameters {.doc-section .doc-section-parameters}
+## Parameters {.doc-section .doc-section-parameters}
 
 | Name      | Type   | Description                                                                                          | Default    |
 |-----------|--------|------------------------------------------------------------------------------------------------------|------------|
 | text      | str    | The input string representing a province/territory in Canada.                                        | _required_ |
 | threshold | int    | The baseline cutoff threshold for accepting a fuzzy match, up to 100 (perfect match). Default is 85. | `85`       |
 
-#### Returns {.doc-section .doc-section-returns}
+## Returns {.doc-section .doc-section-returns}
 
 | Name   | Type   | Description                                   |
 |--------|--------|-----------------------------------------------|
 |        | str    | The cleaned and validated province/territory. |
 
-#### Raises {.doc-section .doc-section-raises}
+## Raises {.doc-section .doc-section-raises}
 
 | Name   | Type       | Description                                                                 |
 |--------|------------|-----------------------------------------------------------------------------|
 |        | ValueError | If a valid Canadian province/territory cannot be identified from the input. |
 |        | TypeError  | If the input is not a string.                                               |
 
-#### Examples {.doc-section .doc-section-examples}
+## Examples {.doc-section .doc-section-examples}
 
 ```python
 >>> clean_location("British Columbia")
