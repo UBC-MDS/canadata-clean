@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -67,15 +67,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-aea124b32290bd4fa8d6570d276e2e09.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d24c3880db9ce3ca4ea2d5bb002bea1f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -161,9 +160,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a>
   <ul class="collapse">
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   </ul></li>
   <li><a href="#to-run-the-tests" id="toc-to-run-the-tests" class="nav-link" data-scroll-target="#to-run-the-tests">To run the tests</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
   <li><a href="#where-this-fits-in-the-python-ecosystem" id="toc-where-this-fits-in-the-python-ecosystem" class="nav-link" data-scroll-target="#where-this-fits-in-the-python-ecosystem">Where This Fits in the Python Ecosystem</a>
   <ul class="collapse">
   <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
@@ -208,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>Package</td>
-<td><a href="https://pypi.org/project/canadataClean/"><img src="https://img.shields.io/pypi/v/canadataClean.svg" class="img-fluid" alt="Latest PyPI Version"></a> <a href="https://pypi.org/project/canadataClean/"><img src="https://img.shields.io/pypi/pyversions/canadataClean.svg" class="img-fluid" alt="Supported Python Versions"></a></td>
+<td><a href="https://test.pypi.org/project/canadataClean/"><img src="https://img.shields.io/pypi/v/canadataClean.svg" class="img-fluid" alt="Latest PyPI Version"></a> <a href="https://test.pypi.org/project/canadataClean/"><img src="https://img.shields.io/pypi/pyversions/canadataClean.svg" class="img-fluid" alt="Supported Python Versions"></a></td>
 </tr>
 <tr class="even">
 <td>Meta</td>
@@ -224,28 +226,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="get-started" class="level2">
 <h2 class="anchored" data-anchor-id="get-started">Get started</h2>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<p>To reproduce the environment, run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate canadataClean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can install this package into your preferred Python environment using pip:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install canadataClean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install canadataClean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To use canadataClean in your code:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean <span class="im">import</span> clean_date, clean_location, clean_phonenumber, clean_postalcode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean <span class="im">import</span> clean_date, clean_location, clean_phonenumber, clean_postalcode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="functions" class="level3">
 <h3 class="anchored" data-anchor-id="functions">Functions</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>clean_date(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean_date(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This function cleans and validates a date string, converting common formats to the Canadian standard YYYY-MM-DD (ISO 8601).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean_postalcode(postal_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>clean_postalcode(postal_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This function cleans and validates a Canadian postal code string field to ensure that it matches the Canadian postal code format (e.g., “A1A 1A1”).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>clean_location(location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean_location(location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This function cleans and validates a free-text entry representing Canadian province or territory and returns the two letter province or territory code, e.g.&nbsp;“BC” for “British Columbia”.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean_phonenumber(phone_number)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>clean_phonenumber(phone_number)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This function cleans and validates a phone number string field to ensure that it matches the Canadian phone number format (“+1 (XXX) XXX-XXXX”).</p>
 </section>
 </section>
 <section id="to-run-the-tests" class="level2">
 <h2 class="anchored" data-anchor-id="to-run-the-tests">To run the tests</h2>
 <p>You can run the tests for this package using <code>pytest</code>. First, install the testing dependencies:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install <span class="at">-e.</span><span class="pp">[</span><span class="ss">test</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install <span class="at">-e.</span><span class="pp">[</span><span class="ss">test</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, run the tests with:</p>
 <pre><code>$ pytest</code></pre>
+<p>To view the test coverage, run the following command:</p>
+<pre><code>$ pytest --cov=src/canadata_clean</code></pre>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>The online documentation for this package can be found <a href="https://ubc-mds.github.io/canadataClean/">here.</a></p>
+<p>To generate and preview the reference documentation, use the following command:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quartodoc</span> build <span class="at">--watch</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<ol type="1">
+<li>Standardizing Dates: The clean_date function standardizes a string to the Canadian format YYYY-MM-DD (ISO 8601)</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean.clean_date <span class="im">import</span> clean_date</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>clean_date <span class="op">=</span> clean_date(<span class="st">"date"</span>) <span class="co"># Replace date with the actual date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Standardizing Postal Code: The clean_postalcode function standardizes a string to the Canadian postal code format (e.g., “A1A 1A1”)</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean.clean_postalcode <span class="im">import</span> clean_postalcode</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>clean_postalcode <span class="op">=</span> clean_postalcode(<span class="st">"postal_code"</span>) <span class="co"># Replace postal_code with the actual postal_code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Standardizing Provinces and Territories: The clean_location function standardizes a string to the two letter province or territory code (e.g.&nbsp;“BC” for “British Columbia”)</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean.clean_location <span class="im">import</span> clean_location</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>clean_location <span class="op">=</span> clean_location(<span class="st">"location"</span>) <span class="co"># Replace location with the actual province or territory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Standardizing Phone Number: The clean_phonenumber function standardizes a string to the Canadian phone number format (“+1 (XXX) XXX-XXXX”)</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean.clean_phonenumber <span class="im">import</span> clean_phonenumber</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>clean_phonenumber <span class="op">=</span> clean_phonenumber(<span class="st">"phone_number"</span>) <span class="co"># Replace phone number with the actual phone number</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="where-this-fits-in-the-python-ecosystem" class="level2">
 <h2 class="anchored" data-anchor-id="where-this-fits-in-the-python-ecosystem">Where This Fits in the Python Ecosystem</h2>
@@ -335,14 +375,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
