@@ -14,7 +14,7 @@ requires = ["hatchling", "hatch-vcs"]
 name = "canadataClean"
 # You can chose to use dynamic versioning with hatch or static where you add it manually.
 # dynamic = ["version"]
-version = "2.0.0"
+version = "2.0.1"
 
 description = """
 A package to perform common cleaning operations on free-text entry Personal Information,
