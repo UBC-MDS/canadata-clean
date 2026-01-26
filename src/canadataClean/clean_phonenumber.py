@@ -39,18 +39,24 @@ def clean_phonenumber(text: str) -> str:
 
     cleaned = ""
 
+    # if input is not a string, raise TypeError
     if not isinstance(text, str):
         raise TypeError("Phone number must be provided as a string.")
 
+    # Extract digits only
     for t in text:
         if t.isdigit():
             cleaned += t
 
+    # Validate length: must be exactly 10 digits
     if len(cleaned) != 10:
         raise ValueError ("Invalid phone number length: exactly 10 digits are required.")
     
+    # Get the area code
     area = cleaned[0:3]
+    # Get the extension code
     extension = cleaned[3:6]
+    # Get the line number
     line = cleaned[6:]
     output = f"+1 ({area}) {extension}-{line}"
     
