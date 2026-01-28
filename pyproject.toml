@@ -198,7 +198,7 @@ check = ["pip-audit"]
 
 #--------------- Add semantic-release configuration ---------------#
 
-[tool.semantic_release]
-branch = "main"
-version_source = "tag"
-tag_format = "{version}"
+#[tool.semantic_release]
+#branch = "main"
+#version_source = "tag"
+#tag_format = "{version}"
