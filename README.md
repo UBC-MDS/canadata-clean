@@ -65,19 +65,19 @@ This function cleans and validates a phone number string field to ensure that it
 You can run the tests for this package using `pytest`. First, install the testing dependencies:
 
 ``` bash
-$ pip install -e.[test]
+pip install -e.[test]
 ```
 
 Then, run the tests with:
 
 ```         
-$ pytest
+pytest
 ```
 
 To view the test coverage, run the following command:
 
 ```         
-$ pytest --cov=src/canadata_clean
+pytest --cov=src/canadata_clean
 ```
 
 ## Documentation
