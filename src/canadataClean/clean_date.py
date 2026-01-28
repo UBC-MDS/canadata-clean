@@ -114,6 +114,7 @@ def clean_date(text: str, min_year: int = 1900, allow_future: bool = False) -> s
     # Raises ValueError: Unable to parse date: 'not a date'.  Expected formats: YYYY-MM-DD, DD/MM/YYYY, or DD-MM-YYYY
     """
     
+    # if input is None or empty, raise error
     if text is None or not isinstance(text, str) or not text.strip():
         raise ValueError("Date string cannot be empty or None")
     
@@ -129,6 +130,7 @@ def clean_date(text: str, min_year: int = 1900, allow_future: bool = False) -> s
     ]
     
     date_obj = None
+    # Try each format until one works
     for fmt in formats:
         try:
             date_obj = datetime.strptime(text, fmt).date()

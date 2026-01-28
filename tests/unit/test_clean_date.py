@@ -1,6 +1,7 @@
 import pytest
 from canadataClean.clean_date import clean_date
 
+# Theses tests assume the input date strings are in date formats, inviad formats will raise ValueError
 def test_valid_date_formats():
     """Test various valid date formats and conversions, covering 4 edge cases: YYYY-MM-DD, DD/MM/YYYY, DD-MM-YYYY, and single-digit handling."""
     # YYYY-MM-DD 

@@ -47,16 +47,21 @@ def clean_postalcode(postal_code: str, region: str = None) -> str:
     Identifies the smallest delivery point, like a city block, a few buildings, or a specific institution. 
     """
 
+    # If postal code is not a string, raise TypeError
     if not isinstance(postal_code, str):
         raise TypeError(f"Expected a string but got {type(postal_code)}")
     
+    # joining only alphanumeric characters and converting to uppercase
     postal_code_raw = ''.join(filter(str.isalnum, postal_code)).upper()  
     valid_geographic_prefix = ["A", "B", "C", "E", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "X", "Y"]
   
+    # if the length of the raw postal code is not 6 characters, raise ValueError
     if len(postal_code_raw) != 6:
         raise ValueError(f"Postal code must be 6 alphanumeric characters long. Got: {len(postal_code_raw)} characters.")
+    # if the first character is not in the valid geographic prefix list, raise ValueError
     if (postal_code_raw[0] not in valid_geographic_prefix):
         raise ValueError(f"Invalid Canadian postal code prefix: {postal_code_raw[0]}")
+    # check the A1A1A1 format, raise ValueError if it does not match
     if not (postal_code_raw[0].isalpha() and postal_code_raw[1].isdigit() and postal_code_raw[2].isalpha() and
             postal_code_raw[3].isdigit() and postal_code_raw[4].isalpha() and postal_code_raw[5].isdigit()):
         raise ValueError(f"Invalid Canadian postal code format: '{postal_code_raw}'. Expected format is 'A1A1A1'.")
