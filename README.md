@@ -1,6 +1,6 @@
 # canadataClean
 
-[![codecov](https://codecov.io/gh/UBC-MDS/canadataClean/graph/badge.svg?token=1karPuKNn7)](https://codecov.io/gh/UBC-MDS/canadataClean) |
+[![codecov](https://codecov.io/gh/UBC-MDS/canadataClean/graph/badge.svg?token=1karPuKNn7)](https://codecov.io/gh/UBC-MDS/canadataClean)
 
 canadataClean provides a collection of utility functions for cleaning and validating Canada-specific structured data in pandas DataFrames. The package is designed to help users efficiently standardize common Canadian data fields while identifying invalid or problematic entries.
 
