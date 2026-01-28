@@ -44,4 +44,5 @@ from canadataClean.clean_phonenumber import clean_phonenumber
 from canadataClean.clean_postalcode import clean_postalcode
 from canadataClean.clean_location  import clean_location
 from canadataClean.clean_date import clean_date
-__all__ = ["clean_phonenumber", "clean_postalcode", "clean_location", "clean_date"]
+from .__version__ import __version__
+__all__ = ["clean_phonenumber", "clean_postalcode", "clean_location", "clean_date", "__version__"]

@@ -13,8 +13,8 @@ requires = ["hatchling", "hatch-vcs"]
 [project]
 name = "canadataClean"
 # You can chose to use dynamic versioning with hatch or static where you add it manually.
-# dynamic = ["version"]
-version = "2.0.1"
+dynamic = ["version"]
+# version = "2.0.1"
 
 description = """
 A package to perform common cleaning operations on free-text entry Personal Information,
@@ -55,7 +55,8 @@ Download = "https://pypi.org/project/canadataClean/#files"
 dev = [
     "hatch",
     "pre-commit",
-    "ruff"
+    "ruff",
+    "hatch-vcs"
 ]
 
 docs = [
@@ -99,7 +100,13 @@ only-packages = true
 [tool.hatch.build.targets.wheel]
 packages = ["src/canadataClean"]
 
+# Tell hatch to use hatch-vcs for versioning and to not auto update the version number (e.g. with "dev" or commit hashes) if there are commits since the last version
+[tool.hatch.version]
+source = "vcs"
+raw-options = { version_scheme = "no-guess-dev", local_scheme = "no-local-version" }
 
+[tool.hatch.build.hooks.vcs]
+version-file = "src/canadataClean/__version__.py"
 
 ######## Configure pytest for your test suite ########
 [tool.pytest.ini_options]
@@ -195,6 +202,3 @@ check = ["pip-audit"]
 branch = "main"
 version_source = "tag"
 tag_format = "{version}"
-
-[tool.hatch.version]
-source = "vcs"
