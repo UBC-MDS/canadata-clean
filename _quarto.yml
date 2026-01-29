@@ -12,8 +12,12 @@ website:
     left:
       - text: "Home"
         href: index.qmd
+      - text: "Usage"
+        href: tutorials/vignette.qmd
       - text: "Reference"
         href:  reference/index.qmd
+      - text: "Retrospective"
+        href: wor/dev_retrospective.qmd
     right:
       - icon:  github
         href: https://github.com/UBC-MDS/canadataClean

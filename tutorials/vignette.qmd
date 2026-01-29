@@ -1,0 +1,155 @@
+---
+title: "Getting Started"
+format: html
+---
+
+# Usage Tutorial
+
+The `canadataClean` package helps you standardize and validate Canada-specific data including dates, postal codes, province names, and phone numbers in Python pandas workflows. Use this guide to see the main functions in action.
+
+---
+
+## Installation
+
+You can install `canadataClean` in several ways, depending on your needs:
+
+### From PyPI (standard users)
+
+```bash
+pip install canadataClean
+```
+
+### From TestPyPI (for testing latest releases)
+
+To try the latest release candidate or pre-release, install from [TestPyPI](https://test.pypi.org/) using:
+
+```bash
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple canadataClean
+```
+
+> **Note:** TestPyPI is a separate package index for testing purposes. If you previously installed from regular PyPI, consider uninstalling first:
+> ```bash
+> pip uninstall canadataClean
+> ```
+
+### For Contributors: Using Conda
+
+If you wish to develop or contribute:
+
+```bash
+conda env create -f environment.yml
+conda activate canadataClean
+```
+---
+
+## Quickstart Examples
+
+We'll show all major functions with realistic usage and outputs.
+
+### 1. Standardizing Dates: `clean_date`
+
+```python
+from canadataClean import clean_date
+
+# Example: various date formats
+dates = [
+    "2023-12-01",
+    "01/12/2023",
+    "12-01-2023",
+    "Dec 1, 2023"
+]
+
+for d in dates:
+    print(f"Input: {d}  -->  Output: {clean_date(d)}")
+```
+
+**What it does:**  
+`clean_date` converts various common formats to the ISO 8601 Canadian standard (`YYYY-MM-DD`).  
+If invalid, it raises a warning but lets your code continue.
+
+---
+
+### 2. Standardizing Postal Codes: `clean_postalcode`
+
+```python
+from canadataClean import clean_postalcode
+
+codes = ["v6t1z4", "V6T 1Z4", "V6T--1Z4", "invalid"]
+
+for c in codes:
+    print(f"Input: {c}  -->  Output: {clean_postalcode(c)}")
+```
+**What it does:**  
+Ensures output is in proper Canadian format: e.g., "V6T 1Z4".  
+If a value is invalid, raises a warning.
+
+---
+
+### 3. Standardizing Provinces & Territories: `clean_location`
+
+```python
+from canadataClean import clean_location
+
+locations = [
+    "British Columbia", "BC", "ontario", "Ontario", "quebec", "Que."
+]
+
+for loc in locations:
+    print(f"Input: {loc}  -->  Output: {clean_location(loc)}")
+```
+**What it does:**  
+Maps full names and abbreviations (case-insensitive, various spelling) to their standard 2-letter province/territory code.
+
+---
+
+### 4. Standardizing Phone Numbers: `clean_phonenumber`
+
+```python
+from canadataClean import clean_phonenumber
+
+numbers = [
+    "604-822-1234", "(604) 822-1234", "+1 604 822 1234", "1234567890", "not a number"
+]
+
+for n in numbers:
+    print(f"Input: {n}  -->  Output: {clean_phonenumber(n)}")
+```
+**What it does:**  
+Formats phone numbers to "+1 (XXX) XXX-XXXX" style; warns if invalid.
+
+---
+
+## Applying to a DataFrame
+
+You can use these functions alongside pandas:
+
+```python
+import pandas as pd
+from canadataClean import clean_date, clean_postalcode, clean_location, clean_phonenumber
+
+df = pd.DataFrame({
+    "date": ["2024/01/28", "Jan 28, 2024"],
+    "postal_code": ["v6t1z4", "M5S-2E4"],
+    "province": ["British Columbia", "Ontario"],
+    "phone": ["(604)822-1234", "+1 416 555 0123"]
+})
+
+df["date"] = df["date"].apply(clean_date)
+df["postal_code"] = df["postal_code"].apply(clean_postalcode)
+df["province"] = df["province"].apply(clean_location)
+df["phone"] = df["phone"].apply(clean_phonenumber)
+
+print(df)
+```
+
+---
+
+## Reference
+
+- For more details on all functions, see the [API Reference](https://ubc-mds.github.io/canadataClean/reference).
+- [View or contribute to the project on GitHub.](https://github.com/UBC-MDS/canadataClean)
+
+---
+
+*2025-26 DSCI-524 Group XX*  
+*For questions or contributions, see our [contributing guidelines](https://github.com/UBC-MDS/canadataClean/blob/main/CONTRIBUTING.md).*

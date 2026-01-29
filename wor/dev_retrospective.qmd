@@ -1,0 +1,98 @@
+---
+title: "Work Organization and Retrospective"
+format: html
+---
+
+## Issue Assignment, Milestones, and Project Boards
+
+Our project management relied heavily on GitHub's collaborative features:
+
+- **Issues:** Every feature, bug, and major decision started as an issue. Each issue was assigned to relevant team members and linked to specific milestones (e.g., *milestone3* and *milestone4*). This ensured accountability and made progress transparent.
+- **Project Boards:** We used a GitHub Project Board with columns for _Backlog_, _Ready_, _In progress_, _In review_, and _Done_, allowing us to visualize task flow and individual workload at a glance. Team and individual performance could be assessed by filtering cards by assignee.
+- **Milestones:** All issues required for this course milestone were grouped under the relevant release milestone. This grouping allowed us to track overall milestone completion and prioritize critical tasks.
+
+**Reflection:**  
+We found that explicitly assigning and labeling issues, and regularly updating the board, reduced confusion and prevented overlap in work. Linking pull requests to issues and milestones provided a clear audit trail of our development process.
+
+---
+
+## Analytical Project Board Views & Data-Driven Retrospective
+
+We grounded our reflection in actual project board analytics, supported by saved GitHub Project views.
+
+### Velocity: How did our scope change over time?
+
+![Velocity by milestone](/images/milestone_progress.png)
+
+Our velocity view shows the progression of issues per milestone: 20 for Milestone 1, 13 for Milestone 2, 6 for Milestone 3, and 11 for Milestone 4. This indicated that our initial planning cast a very wide net; over time, we streamlined our focus, improved our estimation, and concentrated on key deliverables.
+
+---
+
+### Burn-up Chart: Did M2 (writing code) have more issues than M3 (GitHub Actions/documentation)? Were there leftover Todos?
+
+![Burn-up chart by milestone and status](/images/burnup.png)
+
+The burn-up data illustrates that Milestone 2 (core code development) had a greater number of issues completed compared to Milestone 3 (GitHub Actions and documentation). This matches our workflow—most complexity happened early.  
+Our chart also shows most items were completed (“Done”), especially for early milestones. However, for Milestone 4, a few items remained in “Backlog” or “In Progress,” suggesting minor over-commitment towards the end.
+
+---
+
+### Team Contributions: Did everyone contribute equally?
+
+![Workload by team member](/images/contributions.png)
+
+The Team Workload view demonstrates our effort towards equitable workload:
+- kessler24: 16 items
+- randallxlee: 15 items
+- raymondww: 15 items
+- sasha-ss: 12 items
+
+The slight difference is mainly due to division of labor (some members prioritized complex logic, others handled more numerous but smaller docs/tasks). Regular check-ins and proactive redistribution avoided bottlenecks, and workload was kept fair throughout.
+
+---
+
+## Development Tools, Infrastructure, and Organizational Practices
+
+- **Git Flow:** We used a development (`documentation_dev`) branch for integrating features before merging to `main`, which improved code quality at the cost of rare merge conflicts.
+- **CI/CD:** GitHub Actions provided automated testing, linting, documentation builds, and Netlify preview deployments for every PR. Test coverage was tracked continuously.
+- **Documentation:** Used `quartodoc` for API docs and Quarto for prose guides—with Netlify/PR preview for real-time feedback.
+- **Code Reviews:** All PRs required peer review, improving team code quality and knowledge sharing.
+- **Communication:** Issues and PRs were our primary communication channels—avoiding fragmented channels like Slack or email.
+
+**Scaling Up Recommendations:** For larger projects, we would use:
+- More advanced project board automations (e.g., epic/dependency tracking),
+- Stricter branch protections and continuous delivery,
+- Wiki/Discussions for persistent technical notes,
+- Enhanced issue templates and changelogs.
+
+---
+
+## DAKI Retrospective
+
+**Drop:**  
+- Last-minute "review pileups"—regular, shorter review sessions would improve speed and reduce risk of delay.
+- Creating issues without immediate assignee or milestone tags.
+
+**Add:**  
+- Use of GitHub issue templates for fine-grained bug/feature tracking.
+- Routine project board hygiene checks for improved analytics.
+
+**Keep:**  
+- Project board views (velocity, team workload, milestone progress).
+- PR documentation previews for rapid, peer-driven documentation quality assurance.
+
+**Improve:**  
+- Estimating/documentation and review time as part of every milestone (not just code).
+- Promoting cross-review and responsibility rotation to increase resilience and limit bottlenecks.
+
+---
+
+## Reflections
+
+- **Successes:** Documentation previews and continuous feedback improved our product quality and reduced integration friction.
+- **Improvements:** Early ambiguity in issue descriptions was resolved by using checklists and clearer acceptance criteria.
+- **Teamwork:** Our data-driven approach and regular check-ins ensured fair workload distribution and collective project ownership.
+
+---
+
+*Prepared by canadataClean, 2025-26 DSCI-524 Group 02*

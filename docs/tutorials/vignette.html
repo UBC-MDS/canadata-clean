@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>clean_location – canadataClean Documentation</title>
+<title>Getting Started – canadataClean Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -128,11 +128,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tutorials/vignette.html"> 
+    <a class="nav-link active" href="../tutorials/vignette.html" aria-current="page"> 
 <span class="menu-text">Usage</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
+    <a class="nav-link" href="../reference/index.html"> 
 <span class="menu-text">Reference</span></a>
   </li>  
   <li class="nav-item">
@@ -152,210 +152,183 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/clean_date.html">Available Functions</a></li><li class="breadcrumb-item"><a href="../reference/clean_location.html">clean_location</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Function reference</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Available Functions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/clean_date.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">clean_date</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/clean_location.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">clean_location</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/clean_phonenumber.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">clean_phonenumber</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/clean_postalcode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">clean_postalcode</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#canadataClean.clean_location" id="toc-canadataClean.clean_location" class="nav-link active" data-scroll-target="#canadataClean.clean_location">clean_location</a>
+  <li><a href="#usage-tutorial" id="toc-usage-tutorial" class="nav-link active" data-scroll-target="#usage-tutorial">Usage Tutorial</a>
   <ul class="collapse">
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a>
   <ul class="collapse">
-  <li><a href="#canadataClean.clean_location.clean_location" id="toc-canadataClean.clean_location.clean_location" class="nav-link" data-scroll-target="#canadataClean.clean_location.clean_location">clean_location</a></li>
+  <li><a href="#from-pypi-standard-users" id="toc-from-pypi-standard-users" class="nav-link" data-scroll-target="#from-pypi-standard-users">From PyPI (standard users)</a></li>
+  <li><a href="#from-testpypi-for-testing-latest-releases" id="toc-from-testpypi-for-testing-latest-releases" class="nav-link" data-scroll-target="#from-testpypi-for-testing-latest-releases">From TestPyPI (for testing latest releases)</a></li>
+  <li><a href="#for-contributors-using-conda" id="toc-for-contributors-using-conda" class="nav-link" data-scroll-target="#for-contributors-using-conda">For Contributors: Using Conda</a></li>
   </ul></li>
+  <li><a href="#quickstart-examples" id="toc-quickstart-examples" class="nav-link" data-scroll-target="#quickstart-examples">Quickstart Examples</a>
+  <ul class="collapse">
+  <li><a href="#standardizing-dates-clean_date" id="toc-standardizing-dates-clean_date" class="nav-link" data-scroll-target="#standardizing-dates-clean_date">1. Standardizing Dates: <code>clean_date</code></a></li>
+  <li><a href="#standardizing-postal-codes-clean_postalcode" id="toc-standardizing-postal-codes-clean_postalcode" class="nav-link" data-scroll-target="#standardizing-postal-codes-clean_postalcode">2. Standardizing Postal Codes: <code>clean_postalcode</code></a></li>
+  <li><a href="#standardizing-provinces-territories-clean_location" id="toc-standardizing-provinces-territories-clean_location" class="nav-link" data-scroll-target="#standardizing-provinces-territories-clean_location">3. Standardizing Provinces &amp; Territories: <code>clean_location</code></a></li>
+  <li><a href="#standardizing-phone-numbers-clean_phonenumber" id="toc-standardizing-phone-numbers-clean_phonenumber" class="nav-link" data-scroll-target="#standardizing-phone-numbers-clean_phonenumber">4. Standardizing Phone Numbers: <code>clean_phonenumber</code></a></li>
+  </ul></li>
+  <li><a href="#applying-to-a-dataframe" id="toc-applying-to-a-dataframe" class="nav-link" data-scroll-target="#applying-to-a-dataframe">Applying to a DataFrame</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/clean_date.html">Available Functions</a></li><li class="breadcrumb-item"><a href="../reference/clean_location.html">clean_location</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Getting Started</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="canadataClean.clean_location" class="level1">
-<h1>clean_location</h1>
-<p><code>clean_location</code></p>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="#canadataClean.clean_location.clean_location">clean_location</a></td>
-<td>Identify a free-text entry representing a province or territory in Canada using fuzzy matching and return the two letter unique identifier.</td>
-</tr>
-</tbody>
-</table>
-<section id="canadataClean.clean_location.clean_location" class="level3">
-<h3 class="anchored" data-anchor-id="canadataClean.clean_location.clean_location">clean_location</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>clean_location.clean_location(text, threshold<span class="op">=</span><span class="dv">85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Identify a free-text entry representing a province or territory in Canada using fuzzy matching and return the two letter unique identifier.</p>
-<p>The function accepts a province or territory in a variety of English formats, including full spelling, common abbreviations, and minor misspellings. It performs fuzzy matching between the input string and a dictionary of province and territory names, acronyms, and shorthands. If a province or territory cannot be identified, the function will raise an error.</p>
-<p>This program can only process English text entries, containing the 26 characters of the English alphabet. It may not process French characters, including accents, and may not match French province/territory names correctly.</p>
-<section id="parameters" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 6%">
-<col style="width: 76%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>text</td>
-<td>str</td>
-<td>The input string representing a province/territory in Canada.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td>threshold</td>
-<td>int</td>
-<td>The baseline cutoff threshold for accepting a fuzzy match, up to 100 (perfect match). Default is 85.</td>
-<td><code>85</code></td>
-</tr>
-</tbody>
-</table>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="usage-tutorial" class="level1">
+<h1>Usage Tutorial</h1>
+<p>The <code>canadataClean</code> package helps you standardize and validate Canada-specific data including dates, postal codes, province names, and phone numbers in Python pandas workflows. Use this guide to see the main functions in action.</p>
+<hr>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>You can install <code>canadataClean</code> in several ways, depending on your needs:</p>
+<section id="from-pypi-standard-users" class="level3">
+<h3 class="anchored" data-anchor-id="from-pypi-standard-users">From PyPI (standard users)</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install canadataClean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="returns" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>str</td>
-<td>The cleaned and validated province/territory.</td>
-</tr>
-</tbody>
-</table>
+<section id="from-testpypi-for-testing-latest-releases" class="level3">
+<h3 class="anchored" data-anchor-id="from-testpypi-for-testing-latest-releases">From TestPyPI (for testing latest releases)</h3>
+<p>To try the latest release candidate or pre-release, install from <a href="https://test.pypi.org/">TestPyPI</a> using:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--index-url</span> https://test.pypi.org/simple/ <span class="at">--extra-index-url</span> https://pypi.org/simple canadataClean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> TestPyPI is a separate package index for testing purposes. If you previously installed from regular PyPI, consider uninstalling first:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> uninstall canadataClean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</blockquote>
 </section>
-<section id="raises" class="level4 doc-section doc-section-raises">
-<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 12%">
-<col style="width: 79%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>ValueError</td>
-<td>If a valid Canadian province/territory cannot be identified from the input.</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>TypeError</td>
-<td>If the input is not a string.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="examples" class="level4 doc-section doc-section-examples">
-<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> clean_location(<span class="st">"British Columbia"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">'BC'</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> clean_location(<span class="st">"B.C."</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">'BC'</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> clean_location(<span class="st">"Not A Province"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Raises ValueError: Province or territory could not be identified.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> clean_location(<span class="dv">1</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Raises TypeError: Input is not a string.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
+<section id="for-contributors-using-conda" class="level3">
+<h3 class="anchored" data-anchor-id="for-contributors-using-conda">For Contributors: Using Conda</h3>
+<p>If you wish to develop or contribute:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate canadataClean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
 </section>
 </section>
+<section id="quickstart-examples" class="level2">
+<h2 class="anchored" data-anchor-id="quickstart-examples">Quickstart Examples</h2>
+<p>We’ll show all major functions with realistic usage and outputs.</p>
+<section id="standardizing-dates-clean_date" class="level3">
+<h3 class="anchored" data-anchor-id="standardizing-dates-clean_date">1. Standardizing Dates: <code>clean_date</code></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean <span class="im">import</span> clean_date</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: various date formats</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> [</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"2023-12-01"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"01/12/2023"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"12-01-2023"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Dec 1, 2023"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> dates:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Input: </span><span class="sc">{</span>d<span class="sc">}</span><span class="ss">  --&gt;  Output: </span><span class="sc">{</span>clean_date(d)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What it does:</strong><br>
+<code>clean_date</code> converts various common formats to the ISO 8601 Canadian standard (<code>YYYY-MM-DD</code>).<br>
+If invalid, it raises a warning but lets your code continue.</p>
+<hr>
+</section>
+<section id="standardizing-postal-codes-clean_postalcode" class="level3">
+<h3 class="anchored" data-anchor-id="standardizing-postal-codes-clean_postalcode">2. Standardizing Postal Codes: <code>clean_postalcode</code></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean <span class="im">import</span> clean_postalcode</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>codes <span class="op">=</span> [<span class="st">"v6t1z4"</span>, <span class="st">"V6T 1Z4"</span>, <span class="st">"V6T--1Z4"</span>, <span class="st">"invalid"</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> codes:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Input: </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">  --&gt;  Output: </span><span class="sc">{</span>clean_postalcode(c)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What it does:</strong><br>
+Ensures output is in proper Canadian format: e.g., “V6T 1Z4”.<br>
+If a value is invalid, raises a warning.</p>
+<hr>
+</section>
+<section id="standardizing-provinces-territories-clean_location" class="level3">
+<h3 class="anchored" data-anchor-id="standardizing-provinces-territories-clean_location">3. Standardizing Provinces &amp; Territories: <code>clean_location</code></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean <span class="im">import</span> clean_location</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>locations <span class="op">=</span> [</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"British Columbia"</span>, <span class="st">"BC"</span>, <span class="st">"ontario"</span>, <span class="st">"Ontario"</span>, <span class="st">"quebec"</span>, <span class="st">"Que."</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> loc <span class="kw">in</span> locations:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Input: </span><span class="sc">{</span>loc<span class="sc">}</span><span class="ss">  --&gt;  Output: </span><span class="sc">{</span>clean_location(loc)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What it does:</strong><br>
+Maps full names and abbreviations (case-insensitive, various spelling) to their standard 2-letter province/territory code.</p>
+<hr>
+</section>
+<section id="standardizing-phone-numbers-clean_phonenumber" class="level3">
+<h3 class="anchored" data-anchor-id="standardizing-phone-numbers-clean_phonenumber">4. Standardizing Phone Numbers: <code>clean_phonenumber</code></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean <span class="im">import</span> clean_phonenumber</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"604-822-1234"</span>, <span class="st">"(604) 822-1234"</span>, <span class="st">"+1 604 822 1234"</span>, <span class="st">"1234567890"</span>, <span class="st">"not a number"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> numbers:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Input: </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">  --&gt;  Output: </span><span class="sc">{</span>clean_phonenumber(n)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What it does:</strong><br>
+Formats phone numbers to “+1 (XXX) XXX-XXXX” style; warns if invalid.</p>
+<hr>
+</section>
+</section>
+<section id="applying-to-a-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="applying-to-a-dataframe">Applying to a DataFrame</h2>
+<p>You can use these functions alongside pandas:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> canadataClean <span class="im">import</span> clean_date, clean_postalcode, clean_location, clean_phonenumber</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"date"</span>: [<span class="st">"2024/01/28"</span>, <span class="st">"Jan 28, 2024"</span>],</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"postal_code"</span>: [<span class="st">"v6t1z4"</span>, <span class="st">"M5S-2E4"</span>],</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"province"</span>: [<span class="st">"British Columbia"</span>, <span class="st">"Ontario"</span>],</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"phone"</span>: [<span class="st">"(604)822-1234"</span>, <span class="st">"+1 416 555 0123"</span>]</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"date"</span>] <span class="op">=</span> df[<span class="st">"date"</span>].<span class="bu">apply</span>(clean_date)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"postal_code"</span>] <span class="op">=</span> df[<span class="st">"postal_code"</span>].<span class="bu">apply</span>(clean_postalcode)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"province"</span>] <span class="op">=</span> df[<span class="st">"province"</span>].<span class="bu">apply</span>(clean_location)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"phone"</span>] <span class="op">=</span> df[<span class="st">"phone"</span>].<span class="bu">apply</span>(clean_phonenumber)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<ul>
+<li>For more details on all functions, see the <a href="https://ubc-mds.github.io/canadataClean/reference">API Reference</a>.</li>
+<li><a href="https://github.com/UBC-MDS/canadataClean">View or contribute to the project on GitHub.</a></li>
+</ul>
+<hr>
+<p><em>2025-26 DSCI-524 Group XX</em><br>
+<em>For questions or contributions, see our <a href="https://github.com/UBC-MDS/canadataClean/blob/main/CONTRIBUTING.md">contributing guidelines</a>.</em></p>
+
+
 </section>
 </section>
 
