@@ -20,7 +20,7 @@ We found that explicitly assigning and labeling issues, and regularly updating t
 
 During development, we used a variety of tools and GitHub features:
 
-- **GitHub Flow and Git Flow:** We implemented a Git Flow variant. A development (or `staging`) branch was created from `main`, and most feature branches were based off `staging`. Pull requests were reviewed and merged into `staging`, then finally into `main` after integration testing. This provided an extra layer for catch issues before release, at the cost of occasional merge conflicts.
+- **GitHub Flow and Git Flow:** We implemented a Git Flow variant. A development branch was created from `main`, and most feature branches were based off `documentation_dev`. Pull requests were reviewed and merged into `documentation_dev `, then finally into `main` after integration testing. This provided an extra layer for catch issues before release, at the cost of occasional merge conflicts.
 - **Continuous Integration / Continuous Deployment (CI/CD):** We set up GitHub Actions for automated testing, linting, and documentation builds. On each PR, a preview of the documentation site was deployed to Netlify. Test coverage was tracked via an external service, and semantic versioning along with PyPI deploys were triggered on releases.
 - **Issue-driven workflow:** All communications, work progress, and code changes were tracked through issues and PRs, reducing the need for extra channels like email or Slack.
 - **Documentation generation:** We used `quartodoc` to generate API documentation directly from code, and Quarto for prose-based guides (like this one), deployed automatically via CI.
