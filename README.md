@@ -13,9 +13,7 @@ This package helps ensure data consistency for Canadian information by formattin
 
 When a value does not meet the required Canadian format, canadataClean raises a warning-type error to flag the invalid entry while allowing data processing to continue. This makes it easy to identify and address data quality issues without interrupting workflows, while still producing clean, analysis-ready datasets.
 
-## Get started
-
-### Installation
+## Installation
 
 To reproduce the environment, run:
 
@@ -36,7 +34,7 @@ To use canadataClean in your code:
 from canadataClean import clean_date, clean_location, clean_phonenumber, clean_postalcode
 ```
 
-### Functions
+## Functions
 
 ``` python
 clean_date(date)
@@ -48,38 +46,38 @@ This function cleans and validates a date string, converting common formats to t
 clean_postalcode(postal_code)
 ```
 
-This function cleans and validates a Canadian postal code string field to ensure that it matches the Canadian postal code format (e.g., "A1A 1A1").
+This function cleans and validates a Canadian postal code string field to ensure that it matches the Canadian postal code format. This is a six-character code defined and maintained by Canada Post Corporation (CPC) for the purpose of sorting and delivering mail. The characters are arranged in the form 'ANA NAN', where 'A' represents an alphabetic character and 'N' represents a numeric character (e.g., K1A 0T6). More information about Canadian postal codes can be found [here](https://www150.statcan.gc.ca/n1/pub/92-154-g/2015001/tech-eng.htm).
 
 ``` python
 clean_location(location)
 ```
 
-This function cleans and validates a free-text entry representing Canadian province or territory and returns the two letter province or territory code, e.g. "BC" for "British Columbia".
+This function cleans and validates a free-text entry representing Canadian province or territory and returns the two letter province or territory code, e.g. "BC" for "British Columbia". The abbrieviations for Canadian provinces and territories can be found [here](https://www.noslangues-ourlanguages.gc.ca/en/writing-tips-plus/abbreviations-canadian-provinces-and-territories).
 
 ``` python
 clean_phonenumber(phone_number)
 ```
 
-This function cleans and validates a phone number string field to ensure that it matches the Canadian phone number format ("+1 (XXX) XXX-XXXX").
+This function cleans and validates a phone number string field to ensure that it matches the Canadian phone number format ("+1 (XXX) XXX-XXXX") which includes the country code (+1) followed by a 10-digit number.
 
 ## To run the tests
 
 You can run the tests for this package using `pytest`. First, install the testing dependencies:
 
 ``` bash
-$ pip install -e.[test]
+pip install -e.[test]
 ```
 
 Then, run the tests with:
 
 ```         
-$ pytest
+pytest
 ```
 
 To view the test coverage, run the following command:
 
 ```         
-$ pytest --cov=src/canadata_clean
+pytest --cov=src/canadata_clean
 ```
 
 ## Documentation
