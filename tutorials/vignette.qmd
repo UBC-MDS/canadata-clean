@@ -11,19 +11,35 @@ The `canadataClean` package helps you standardize and validate Canada-specific d
 
 ## Installation
 
-Install via pip:
+You can install `canadataClean` in several ways, depending on your needs:
+
+### From PyPI (standard users)
 
 ```bash
 pip install canadataClean
 ```
 
-Or, create the development environment using conda (for contributors):
+### From TestPyPI (for testing latest releases)
+
+To try the latest release candidate or pre-release, install from [TestPyPI](https://test.pypi.org/) using:
+
+```bash
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple canadataClean
+```
+
+> **Note:** TestPyPI is a separate package index for testing purposes. If you previously installed from regular PyPI, consider uninstalling first:
+> ```bash
+> pip uninstall canadataClean
+> ```
+
+### For Contributors: Using Conda
+
+If you wish to develop or contribute:
 
 ```bash
 conda env create -f environment.yml
 conda activate canadataClean
 ```
-
 ---
 
 ## Quickstart Examples
