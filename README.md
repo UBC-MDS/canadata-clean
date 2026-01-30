@@ -98,29 +98,29 @@ quarto preview
 1.  Standardizing Dates: The clean_date function standardizes a string to the Canadian format YYYY-MM-DD (ISO 8601)
 
 ``` python
-from canadataClean.clean_date import clean_date
-clean_date = clean_date("date") # Replace date with the actual date
+from canadataClean import clean_date
+cleaned_date = clean_date("date") # Replace date with the actual date
 ```
 
 2.  Standardizing Postal Code: The clean_postalcode function standardizes a string to the Canadian postal code format (e.g., "A1A 1A1")
 
 ``` python
-from canadataClean.clean_postalcode import clean_postalcode
-clean_postalcode = clean_postalcode("postal_code") # Replace postal_code with the actual postal_code
+from canadataClean import clean_postalcode
+cleaned_postalcode = clean_postalcode("postal_code") # Replace postal_code with the actual postal_code
 ```
 
 3.  Standardizing Provinces and Territories: The clean_location function standardizes a string to the two letter province or territory code (e.g. "BC" for "British Columbia")
 
 ``` python
-from canadataClean.clean_location import clean_location
-clean_location = clean_location("location") # Replace location with the actual province or territory
+from canadataClean import clean_location
+cleaned_location = clean_location("location") # Replace location with the actual province or territory
 ```
 
 4.  Standardizing Phone Number: The clean_phonenumber function standardizes a string to the Canadian phone number format ("+1 (XXX) XXX-XXXX")
 
 ``` python
-from canadataClean.clean_phonenumber import clean_phonenumber
-clean_phonenumber = clean_phonenumber("phone_number") # Replace phone number with the actual phone number
+from canadataClean import clean_phonenumber
+cleaned_phonenumber = clean_phonenumber("phone_number") # Replace phone number with the actual phone number
 ```
 
 ## Where This Fits in the Python Ecosystem
