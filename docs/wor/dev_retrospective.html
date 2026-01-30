@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>clean_location – canadataClean Documentation</title>
+<title>Work Organization and Retrospective – canadataClean Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -106,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -132,11 +97,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Usage</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
+    <a class="nav-link" href="../reference/index.html"> 
 <span class="menu-text">Reference</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../wor/dev_retrospective.html"> 
+    <a class="nav-link active" href="../wor/dev_retrospective.html" aria-current="page"> 
 <span class="menu-text">Retrospective</span></a>
   </li>  
 </ul>
@@ -152,211 +117,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/clean_date.html">Available Functions</a></li><li class="breadcrumb-item"><a href="../reference/clean_location.html">clean_location</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Function reference</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Available Functions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/clean_date.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">clean_date</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/clean_location.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">clean_location</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/clean_phonenumber.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">clean_phonenumber</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/clean_postalcode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">clean_postalcode</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#canadataClean.clean_location" id="toc-canadataClean.clean_location" class="nav-link active" data-scroll-target="#canadataClean.clean_location">clean_location</a>
+  <li><a href="#issue-assignment-milestones-and-project-boards" id="toc-issue-assignment-milestones-and-project-boards" class="nav-link active" data-scroll-target="#issue-assignment-milestones-and-project-boards">Issue Assignment, Milestones, and Project Boards</a></li>
+  <li><a href="#analytical-project-board-views-data-driven-retrospective" id="toc-analytical-project-board-views-data-driven-retrospective" class="nav-link" data-scroll-target="#analytical-project-board-views-data-driven-retrospective">Analytical Project Board Views &amp; Data-Driven Retrospective</a>
   <ul class="collapse">
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
-  <ul class="collapse">
-  <li><a href="#canadataClean.clean_location.clean_location" id="toc-canadataClean.clean_location.clean_location" class="nav-link" data-scroll-target="#canadataClean.clean_location.clean_location">clean_location</a></li>
+  <li><a href="#velocity-how-did-our-scope-change-over-time" id="toc-velocity-how-did-our-scope-change-over-time" class="nav-link" data-scroll-target="#velocity-how-did-our-scope-change-over-time">Velocity: How did our scope change over time?</a></li>
+  <li><a href="#burn-up-chart-did-m2-writing-code-have-more-issues-than-m3-github-actionsdocumentation-were-there-leftover-todos" id="toc-burn-up-chart-did-m2-writing-code-have-more-issues-than-m3-github-actionsdocumentation-were-there-leftover-todos" class="nav-link" data-scroll-target="#burn-up-chart-did-m2-writing-code-have-more-issues-than-m3-github-actionsdocumentation-were-there-leftover-todos">Burn-up Chart: Did M2 (writing code) have more issues than M3 (GitHub Actions/documentation)? Were there leftover Todos?</a></li>
+  <li><a href="#team-contributions-did-everyone-contribute-equally" id="toc-team-contributions-did-everyone-contribute-equally" class="nav-link" data-scroll-target="#team-contributions-did-everyone-contribute-equally">Team Contributions: Did everyone contribute equally?</a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#development-tools-infrastructure-and-organizational-practices" id="toc-development-tools-infrastructure-and-organizational-practices" class="nav-link" data-scroll-target="#development-tools-infrastructure-and-organizational-practices">Development Tools, Infrastructure, and Organizational Practices</a></li>
+  <li><a href="#daki-retrospective" id="toc-daki-retrospective" class="nav-link" data-scroll-target="#daki-retrospective">DAKI Retrospective</a></li>
+  <li><a href="#reflections" id="toc-reflections" class="nav-link" data-scroll-target="#reflections">Reflections</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/clean_date.html">Available Functions</a></li><li class="breadcrumb-item"><a href="../reference/clean_location.html">clean_location</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Work Organization and Retrospective</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="canadataClean.clean_location" class="level1">
-<h1>clean_location</h1>
-<p><code>clean_location</code></p>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="#canadataClean.clean_location.clean_location">clean_location</a></td>
-<td>Identify a free-text entry representing a province or territory in Canada using fuzzy matching and return the two letter unique identifier.</td>
-</tr>
-</tbody>
-</table>
-<section id="canadataClean.clean_location.clean_location" class="level3">
-<h3 class="anchored" data-anchor-id="canadataClean.clean_location.clean_location">clean_location</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>clean_location.clean_location(text, threshold<span class="op">=</span><span class="dv">85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Identify a free-text entry representing a province or territory in Canada using fuzzy matching and return the two letter unique identifier.</p>
-<p>The function accepts a province or territory in a variety of English formats, including full spelling, common abbreviations, and minor misspellings. It performs fuzzy matching between the input string and a dictionary of province and territory names, acronyms, and shorthands. If a province or territory cannot be identified, the function will raise an error.</p>
-<p>This program can only process English text entries, containing the 26 characters of the English alphabet. It may not process French characters, including accents, and may not match French province/territory names correctly.</p>
-<section id="parameters" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 6%">
-<col style="width: 76%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>text</td>
-<td>str</td>
-<td>The input string representing a province/territory in Canada.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td>threshold</td>
-<td>int</td>
-<td>The baseline cutoff threshold for accepting a fuzzy match, up to 100 (perfect match). Default is 85.</td>
-<td><code>85</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>str</td>
-<td>The cleaned and validated province/territory.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="raises" class="level4 doc-section doc-section-raises">
-<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 12%">
-<col style="width: 79%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>ValueError</td>
-<td>If a valid Canadian province/territory cannot be identified from the input.</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>TypeError</td>
-<td>If the input is not a string.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="examples" class="level4 doc-section doc-section-examples">
-<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> clean_location(<span class="st">"British Columbia"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">'BC'</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> clean_location(<span class="st">"B.C."</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">'BC'</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> clean_location(<span class="st">"Not A Province"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Raises ValueError: Province or territory could not be identified.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> clean_location(<span class="dv">1</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Raises TypeError: Input is not a string.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="issue-assignment-milestones-and-project-boards" class="level2">
+<h2 class="anchored" data-anchor-id="issue-assignment-milestones-and-project-boards">Issue Assignment, Milestones, and Project Boards</h2>
+<p>Our project management relied heavily on GitHub’s collaborative features:</p>
+<ul>
+<li><strong>Issues:</strong> Every feature, bug, and major decision started as an issue. Each issue was assigned to relevant team members and linked to specific milestones (e.g., <em>milestone3</em> and <em>milestone4</em>). This ensured accountability and made progress transparent.</li>
+<li><strong>Project Boards:</strong> We used a GitHub Project Board with columns for <em>Backlog</em>, <em>Ready</em>, <em>In progress</em>, <em>In review</em>, and <em>Done</em>, allowing us to visualize task flow and individual workload at a glance. Team and individual performance could be assessed by filtering cards by assignee.</li>
+<li><strong>Milestones:</strong> All issues required for this course milestone were grouped under the relevant release milestone. This grouping allowed us to track overall milestone completion and prioritize critical tasks.</li>
+</ul>
+<p><strong>Reflection:</strong><br>
+We found that explicitly assigning and labeling issues, and regularly updating the board, reduced confusion and prevented overlap in work. Linking pull requests to issues and milestones provided a clear audit trail of our development process.</p>
+<hr>
+</section>
+<section id="analytical-project-board-views-data-driven-retrospective" class="level2">
+<h2 class="anchored" data-anchor-id="analytical-project-board-views-data-driven-retrospective">Analytical Project Board Views &amp; Data-Driven Retrospective</h2>
+<p>We grounded our reflection in actual project board analytics, supported by saved GitHub Project views.</p>
+<section id="velocity-how-did-our-scope-change-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="velocity-how-did-our-scope-change-over-time">Velocity: How did our scope change over time?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/milestone_progress.png" class="img-fluid figure-img"></p>
+<figcaption>Velocity by milestone</figcaption>
+</figure>
+</div>
+<p>Our velocity view shows the progression of issues per milestone: 20 for Milestone 1, 13 for Milestone 2, 6 for Milestone 3, and 11 for Milestone 4. This indicated that our initial planning cast a very wide net; over time, we streamlined our focus, improved our estimation, and concentrated on key deliverables.</p>
+<hr>
+</section>
+<section id="burn-up-chart-did-m2-writing-code-have-more-issues-than-m3-github-actionsdocumentation-were-there-leftover-todos" class="level3">
+<h3 class="anchored" data-anchor-id="burn-up-chart-did-m2-writing-code-have-more-issues-than-m3-github-actionsdocumentation-were-there-leftover-todos">Burn-up Chart: Did M2 (writing code) have more issues than M3 (GitHub Actions/documentation)? Were there leftover Todos?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/burnup.png" class="img-fluid figure-img"></p>
+<figcaption>Burn-up chart by milestone and status</figcaption>
+</figure>
+</div>
+<p>The burn-up data illustrates that Milestone 2 (core code development) had a greater number of issues completed compared to Milestone 3 (GitHub Actions and documentation). This matches our workflow—most complexity happened early.<br>
+Our chart also shows most items were completed (“Done”), especially for early milestones. However, for Milestone 4, a few items remained in “Backlog” or “In Progress,” suggesting minor over-commitment towards the end.</p>
+<hr>
+</section>
+<section id="team-contributions-did-everyone-contribute-equally" class="level3">
+<h3 class="anchored" data-anchor-id="team-contributions-did-everyone-contribute-equally">Team Contributions: Did everyone contribute equally?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/contributions.png" class="img-fluid figure-img"></p>
+<figcaption>Workload by team member</figcaption>
+</figure>
+</div>
+<p>The Team Workload view demonstrates our effort towards equitable workload: - kessler24: 16 items - randallxlee: 15 items - raymondww: 15 items - sasha-ss: 12 items</p>
+<p>The slight difference is mainly due to division of labor (some members prioritized complex logic, others handled more numerous but smaller docs/tasks). Regular check-ins and proactive redistribution avoided bottlenecks, and workload was kept fair throughout.</p>
+<hr>
 </section>
 </section>
+<section id="development-tools-infrastructure-and-organizational-practices" class="level2">
+<h2 class="anchored" data-anchor-id="development-tools-infrastructure-and-organizational-practices">Development Tools, Infrastructure, and Organizational Practices</h2>
+<ul>
+<li><strong>Git Flow:</strong> We used a development (<code>documentation_dev</code>) branch for integrating features before merging to <code>main</code>, which improved code quality at the cost of rare merge conflicts.</li>
+<li><strong>CI/CD:</strong> GitHub Actions provided automated testing, linting, documentation builds, and Netlify preview deployments for every PR. Test coverage was tracked continuously.</li>
+<li><strong>Documentation:</strong> Used <code>quartodoc</code> for API docs and Quarto for prose guides—with Netlify/PR preview for real-time feedback.</li>
+<li><strong>Code Reviews:</strong> All PRs required peer review, improving team code quality and knowledge sharing.</li>
+<li><strong>Communication:</strong> Issues and PRs were our primary communication channels—avoiding fragmented channels like Slack or email.</li>
+</ul>
+<p><strong>Scaling Up Recommendations:</strong> For larger projects, we would use: - More advanced project board automations (e.g., epic/dependency tracking), - Stricter branch protections and continuous delivery, - Wiki/Discussions for persistent technical notes, - Enhanced issue templates and changelogs.</p>
+<hr>
 </section>
+<section id="daki-retrospective" class="level2">
+<h2 class="anchored" data-anchor-id="daki-retrospective">DAKI Retrospective</h2>
+<p><strong>Drop:</strong><br>
+- Last-minute “review pileups”—regular, shorter review sessions would improve speed and reduce risk of delay. - Creating issues without immediate assignee or milestone tags.</p>
+<p><strong>Add:</strong><br>
+- Use of GitHub issue templates for fine-grained bug/feature tracking. - Routine project board hygiene checks for improved analytics.</p>
+<p><strong>Keep:</strong><br>
+- Project board views (velocity, team workload, milestone progress). - PR documentation previews for rapid, peer-driven documentation quality assurance.</p>
+<p><strong>Improve:</strong><br>
+- Estimating/documentation and review time as part of every milestone (not just code). - Promoting cross-review and responsibility rotation to increase resilience and limit bottlenecks.</p>
+<hr>
+</section>
+<section id="reflections" class="level2">
+<h2 class="anchored" data-anchor-id="reflections">Reflections</h2>
+<ul>
+<li><strong>Successes:</strong> Documentation previews and continuous feedback improved our product quality and reduced integration friction.</li>
+<li><strong>Improvements:</strong> Early ambiguity in issue descriptions was resolved by using checklists and clearer acceptance criteria.</li>
+<li><strong>Teamwork:</strong> Our data-driven approach and regular check-ins ensured fair workload distribution and collective project ownership.</li>
+</ul>
+<hr>
+<p><em>Prepared by canadataClean, 2025-26 DSCI-524 Group 02</em></p>
+
+
 </section>
 
 </main> <!-- /main -->

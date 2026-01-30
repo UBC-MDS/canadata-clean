@@ -84,6 +84,41 @@
     "text": "You can build your package using the environment and scripts defined in the build tables:\nhatch run build:check\nThis script builds and checks the output distribution files of your package.\nThis build environment table declares that pip and twine should be added to that environment. Adding pip to the environment ensures that it is a current, up-to-date version.\n[tool.hatch.envs.build]\ndescription = \"\"\"Build and test your package.\"\"\"\ndependencies = [\n    \"pip\",\n    \"twine\",\n]\ndetached = true\n# This table installs created the command hatch run install:check which will build and check your package.\n[tool.hatch.envs.install.scripts]\ncheck = [\n    \"pip check\",\n    \"hatch build {args:--clean}\",\n    \"twine check dist/*\",\n]\nThis uses the above environment and tells hatch to run\n\npip check, # verifies your dependencies\nhatch build --clean\n\ntwine check dist/* # this checks your distribution for metadata and other potential issues. to build and test your package."
   },
   {
+    "objectID": "tutorials/vignette.html",
+    "href": "tutorials/vignette.html",
+    "title": "Getting Started",
+    "section": "",
+    "text": "The canadataClean package helps you standardize and validate Canada-specific data including dates, postal codes, province names, and phone numbers in Python pandas workflows. Use this guide to see the main functions in action.\n\n\n\nYou can install canadataClean in several ways, depending on your needs:\n\n\npip install canadataClean\n\n\n\nTo try the latest release candidate or pre-release, install from TestPyPI using:\npip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple canadataClean\n\nNote: TestPyPI is a separate package index for testing purposes. If you previously installed from regular PyPI, consider uninstalling first:\npip uninstall canadataClean\n\n\n\n\nIf you wish to develop or contribute:\nconda env create -f environment.yml\nconda activate canadataClean\n\n\n\n\n\nWe’ll show all major functions with realistic usage and outputs.\n\n\nfrom canadataClean import clean_date\n\n# Example: various date formats\ndates = [\n    \"2023-12-01\",\n    \"01/12/2023\",\n    \"12-01-2023\",\n    \"Dec 1, 2023\"\n]\n\nfor d in dates:\n    print(f\"Input: {d}  --&gt;  Output: {clean_date(d)}\")\nWhat it does:\nclean_date converts various common formats to the ISO 8601 Canadian standard (YYYY-MM-DD).\nIf invalid, it raises a warning but lets your code continue.\n\n\n\n\nfrom canadataClean import clean_postalcode\n\ncodes = [\"v6t1z4\", \"V6T 1Z4\", \"V6T--1Z4\", \"invalid\"]\n\nfor c in codes:\n    print(f\"Input: {c}  --&gt;  Output: {clean_postalcode(c)}\")\nWhat it does:\nEnsures output is in proper Canadian format: e.g., “V6T 1Z4”.\nIf a value is invalid, raises a warning.\n\n\n\n\nfrom canadataClean import clean_location\n\nlocations = [\n    \"British Columbia\", \"BC\", \"ontario\", \"Ontario\", \"quebec\", \"Que.\"\n]\n\nfor loc in locations:\n    print(f\"Input: {loc}  --&gt;  Output: {clean_location(loc)}\")\nWhat it does:\nMaps full names and abbreviations (case-insensitive, various spelling) to their standard 2-letter province/territory code.\n\n\n\n\nfrom canadataClean import clean_phonenumber\n\nnumbers = [\n    \"604-822-1234\", \"(604) 822-1234\", \"+1 604 822 1234\", \"1234567890\", \"not a number\"\n]\n\nfor n in numbers:\n    print(f\"Input: {n}  --&gt;  Output: {clean_phonenumber(n)}\")\nWhat it does:\nFormats phone numbers to “+1 (XXX) XXX-XXXX” style; warns if invalid.\n\n\n\n\n\nYou can use these functions alongside pandas:\nimport pandas as pd\nfrom canadataClean import clean_date, clean_postalcode, clean_location, clean_phonenumber\n\ndf = pd.DataFrame({\n    \"date\": [\"2024/01/28\", \"Jan 28, 2024\"],\n    \"postal_code\": [\"v6t1z4\", \"M5S-2E4\"],\n    \"province\": [\"British Columbia\", \"Ontario\"],\n    \"phone\": [\"(604)822-1234\", \"+1 416 555 0123\"]\n})\n\ndf[\"date\"] = df[\"date\"].apply(clean_date)\ndf[\"postal_code\"] = df[\"postal_code\"].apply(clean_postalcode)\ndf[\"province\"] = df[\"province\"].apply(clean_location)\ndf[\"phone\"] = df[\"phone\"].apply(clean_phonenumber)\n\nprint(df)\n\n\n\n\n\nFor more details on all functions, see the API Reference.\nView or contribute to the project on GitHub.\n\n\n2025-26 DSCI-524 Group XX\nFor questions or contributions, see our contributing guidelines."
+  },
+  {
+    "objectID": "tutorials/vignette.html#installation",
+    "href": "tutorials/vignette.html#installation",
+    "title": "Getting Started",
+    "section": "",
+    "text": "You can install canadataClean in several ways, depending on your needs:\n\n\npip install canadataClean\n\n\n\nTo try the latest release candidate or pre-release, install from TestPyPI using:\npip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple canadataClean\n\nNote: TestPyPI is a separate package index for testing purposes. If you previously installed from regular PyPI, consider uninstalling first:\npip uninstall canadataClean\n\n\n\n\nIf you wish to develop or contribute:\nconda env create -f environment.yml\nconda activate canadataClean"
+  },
+  {
+    "objectID": "tutorials/vignette.html#quickstart-examples",
+    "href": "tutorials/vignette.html#quickstart-examples",
+    "title": "Getting Started",
+    "section": "",
+    "text": "We’ll show all major functions with realistic usage and outputs.\n\n\nfrom canadataClean import clean_date\n\n# Example: various date formats\ndates = [\n    \"2023-12-01\",\n    \"01/12/2023\",\n    \"12-01-2023\",\n    \"Dec 1, 2023\"\n]\n\nfor d in dates:\n    print(f\"Input: {d}  --&gt;  Output: {clean_date(d)}\")\nWhat it does:\nclean_date converts various common formats to the ISO 8601 Canadian standard (YYYY-MM-DD).\nIf invalid, it raises a warning but lets your code continue.\n\n\n\n\nfrom canadataClean import clean_postalcode\n\ncodes = [\"v6t1z4\", \"V6T 1Z4\", \"V6T--1Z4\", \"invalid\"]\n\nfor c in codes:\n    print(f\"Input: {c}  --&gt;  Output: {clean_postalcode(c)}\")\nWhat it does:\nEnsures output is in proper Canadian format: e.g., “V6T 1Z4”.\nIf a value is invalid, raises a warning.\n\n\n\n\nfrom canadataClean import clean_location\n\nlocations = [\n    \"British Columbia\", \"BC\", \"ontario\", \"Ontario\", \"quebec\", \"Que.\"\n]\n\nfor loc in locations:\n    print(f\"Input: {loc}  --&gt;  Output: {clean_location(loc)}\")\nWhat it does:\nMaps full names and abbreviations (case-insensitive, various spelling) to their standard 2-letter province/territory code.\n\n\n\n\nfrom canadataClean import clean_phonenumber\n\nnumbers = [\n    \"604-822-1234\", \"(604) 822-1234\", \"+1 604 822 1234\", \"1234567890\", \"not a number\"\n]\n\nfor n in numbers:\n    print(f\"Input: {n}  --&gt;  Output: {clean_phonenumber(n)}\")\nWhat it does:\nFormats phone numbers to “+1 (XXX) XXX-XXXX” style; warns if invalid."
+  },
+  {
+    "objectID": "tutorials/vignette.html#applying-to-a-dataframe",
+    "href": "tutorials/vignette.html#applying-to-a-dataframe",
+    "title": "Getting Started",
+    "section": "",
+    "text": "You can use these functions alongside pandas:\nimport pandas as pd\nfrom canadataClean import clean_date, clean_postalcode, clean_location, clean_phonenumber\n\ndf = pd.DataFrame({\n    \"date\": [\"2024/01/28\", \"Jan 28, 2024\"],\n    \"postal_code\": [\"v6t1z4\", \"M5S-2E4\"],\n    \"province\": [\"British Columbia\", \"Ontario\"],\n    \"phone\": [\"(604)822-1234\", \"+1 416 555 0123\"]\n})\n\ndf[\"date\"] = df[\"date\"].apply(clean_date)\ndf[\"postal_code\"] = df[\"postal_code\"].apply(clean_postalcode)\ndf[\"province\"] = df[\"province\"].apply(clean_location)\ndf[\"phone\"] = df[\"phone\"].apply(clean_phonenumber)\n\nprint(df)"
+  },
+  {
+    "objectID": "tutorials/vignette.html#reference",
+    "href": "tutorials/vignette.html#reference",
+    "title": "Getting Started",
+    "section": "",
+    "text": "For more details on all functions, see the API Reference.\nView or contribute to the project on GitHub.\n\n\n2025-26 DSCI-524 Group XX\nFor questions or contributions, see our contributing guidelines."
+  },
+  {
     "objectID": "index.html#summary",
     "href": "index.html#summary",
     "title": "canadataClean",
@@ -257,6 +292,48 @@
     "title": "Contributing",
     "section": "Get Started!",
     "text": "Get Started!\nReady to contribute? Here’s how to set up canadataClean for local development.\n\nClone the https://github.com/kessler24/canadataClean repository on GitHub.\ngit clone git@github.com:your_name_here/canadataClean.git\nInstall hatch.\nCreate a branch for local development using the default branch (typically main) as a starting point. Use fix or clean as a prefix for your branch name.\ngit checkout main\ngit checkout -b clean-name-of-your-func\nNow you can make your changes locally.\nWhen you’re done making changes, apply the quality assurance tools and check that your changes pass our test suite. This is all included with tox\nhatch run test:run\nCommit your changes and push your branch to GitHub. Please use semantic commit messages.\ngit add .\ngit commit -m \"fix: summarize your changes\"\ngit push -u origin fix-name-of-your-bugfix\nOpen the link displayed in the message when pushing your new branch in order to submit a pull request.\nAt least one teammate must review your pull request before it can be merged.\n\n\nPull Request Guidelines\nBefore you submit a pull request, check that it meets these guidelines:\n\nThe pull request should include tests for Canadian formatting functionality.\nIf the pull request adds functionality, the docs should be updated. Put your new functionality into a function with a docstring that explains the Canadian formatting standards being applied.\nYour pull request must be reviewed and approved by at least one other team member before merging.\nYour pull request will automatically be checked by the full test suite. It needs to pass all of them before it can be considered for merging.\nEnsure your code follows the project’s coding standards and includes appropriate error handling for edge cases in Canadian data formatting."
+  },
+  {
+    "objectID": "wor/dev_retrospective.html",
+    "href": "wor/dev_retrospective.html",
+    "title": "Work Organization and Retrospective",
+    "section": "",
+    "text": "Our project management relied heavily on GitHub’s collaborative features:\n\nIssues: Every feature, bug, and major decision started as an issue. Each issue was assigned to relevant team members and linked to specific milestones (e.g., milestone3 and milestone4). This ensured accountability and made progress transparent.\nProject Boards: We used a GitHub Project Board with columns for Backlog, Ready, In progress, In review, and Done, allowing us to visualize task flow and individual workload at a glance. Team and individual performance could be assessed by filtering cards by assignee.\nMilestones: All issues required for this course milestone were grouped under the relevant release milestone. This grouping allowed us to track overall milestone completion and prioritize critical tasks.\n\nReflection:\nWe found that explicitly assigning and labeling issues, and regularly updating the board, reduced confusion and prevented overlap in work. Linking pull requests to issues and milestones provided a clear audit trail of our development process."
+  },
+  {
+    "objectID": "wor/dev_retrospective.html#issue-assignment-milestones-and-project-boards",
+    "href": "wor/dev_retrospective.html#issue-assignment-milestones-and-project-boards",
+    "title": "Work Organization and Retrospective",
+    "section": "",
+    "text": "Our project management relied heavily on GitHub’s collaborative features:\n\nIssues: Every feature, bug, and major decision started as an issue. Each issue was assigned to relevant team members and linked to specific milestones (e.g., milestone3 and milestone4). This ensured accountability and made progress transparent.\nProject Boards: We used a GitHub Project Board with columns for Backlog, Ready, In progress, In review, and Done, allowing us to visualize task flow and individual workload at a glance. Team and individual performance could be assessed by filtering cards by assignee.\nMilestones: All issues required for this course milestone were grouped under the relevant release milestone. This grouping allowed us to track overall milestone completion and prioritize critical tasks.\n\nReflection:\nWe found that explicitly assigning and labeling issues, and regularly updating the board, reduced confusion and prevented overlap in work. Linking pull requests to issues and milestones provided a clear audit trail of our development process."
+  },
+  {
+    "objectID": "wor/dev_retrospective.html#analytical-project-board-views-data-driven-retrospective",
+    "href": "wor/dev_retrospective.html#analytical-project-board-views-data-driven-retrospective",
+    "title": "Work Organization and Retrospective",
+    "section": "Analytical Project Board Views & Data-Driven Retrospective",
+    "text": "Analytical Project Board Views & Data-Driven Retrospective\nWe grounded our reflection in actual project board analytics, supported by saved GitHub Project views.\n\nVelocity: How did our scope change over time?\n\n\n\nVelocity by milestone\n\n\nOur velocity view shows the progression of issues per milestone: 20 for Milestone 1, 13 for Milestone 2, 6 for Milestone 3, and 11 for Milestone 4. This indicated that our initial planning cast a very wide net; over time, we streamlined our focus, improved our estimation, and concentrated on key deliverables.\n\n\n\nBurn-up Chart: Did M2 (writing code) have more issues than M3 (GitHub Actions/documentation)? Were there leftover Todos?\n\n\n\nBurn-up chart by milestone and status\n\n\nThe burn-up data illustrates that Milestone 2 (core code development) had a greater number of issues completed compared to Milestone 3 (GitHub Actions and documentation). This matches our workflow—most complexity happened early.\nOur chart also shows most items were completed (“Done”), especially for early milestones. However, for Milestone 4, a few items remained in “Backlog” or “In Progress,” suggesting minor over-commitment towards the end.\n\n\n\nTeam Contributions: Did everyone contribute equally?\n\n\n\nWorkload by team member\n\n\nThe Team Workload view demonstrates our effort towards equitable workload: - kessler24: 16 items - randallxlee: 15 items - raymondww: 15 items - sasha-ss: 12 items\nThe slight difference is mainly due to division of labor (some members prioritized complex logic, others handled more numerous but smaller docs/tasks). Regular check-ins and proactive redistribution avoided bottlenecks, and workload was kept fair throughout."
+  },
+  {
+    "objectID": "wor/dev_retrospective.html#development-tools-infrastructure-and-organizational-practices",
+    "href": "wor/dev_retrospective.html#development-tools-infrastructure-and-organizational-practices",
+    "title": "Work Organization and Retrospective",
+    "section": "Development Tools, Infrastructure, and Organizational Practices",
+    "text": "Development Tools, Infrastructure, and Organizational Practices\n\nGit Flow: We used a development (documentation_dev) branch for integrating features before merging to main, which improved code quality at the cost of rare merge conflicts.\nCI/CD: GitHub Actions provided automated testing, linting, documentation builds, and Netlify preview deployments for every PR. Test coverage was tracked continuously.\nDocumentation: Used quartodoc for API docs and Quarto for prose guides—with Netlify/PR preview for real-time feedback.\nCode Reviews: All PRs required peer review, improving team code quality and knowledge sharing.\nCommunication: Issues and PRs were our primary communication channels—avoiding fragmented channels like Slack or email.\n\nScaling Up Recommendations: For larger projects, we would use: - More advanced project board automations (e.g., epic/dependency tracking), - Stricter branch protections and continuous delivery, - Wiki/Discussions for persistent technical notes, - Enhanced issue templates and changelogs."
+  },
+  {
+    "objectID": "wor/dev_retrospective.html#daki-retrospective",
+    "href": "wor/dev_retrospective.html#daki-retrospective",
+    "title": "Work Organization and Retrospective",
+    "section": "DAKI Retrospective",
+    "text": "DAKI Retrospective\nDrop:\n- Last-minute “review pileups”—regular, shorter review sessions would improve speed and reduce risk of delay. - Creating issues without immediate assignee or milestone tags.\nAdd:\n- Use of GitHub issue templates for fine-grained bug/feature tracking. - Routine project board hygiene checks for improved analytics.\nKeep:\n- Project board views (velocity, team workload, milestone progress). - PR documentation previews for rapid, peer-driven documentation quality assurance.\nImprove:\n- Estimating/documentation and review time as part of every milestone (not just code). - Promoting cross-review and responsibility rotation to increase resilience and limit bottlenecks."
+  },
+  {
+    "objectID": "wor/dev_retrospective.html#reflections",
+    "href": "wor/dev_retrospective.html#reflections",
+    "title": "Work Organization and Retrospective",
+    "section": "Reflections",
+    "text": "Reflections\n\nSuccesses: Documentation previews and continuous feedback improved our product quality and reduced integration friction.\nImprovements: Early ambiguity in issue descriptions was resolved by using checklists and clearer acceptance criteria.\nTeamwork: Our data-driven approach and regular check-ins ensured fair workload distribution and collective project ownership.\n\n\nPrepared by canadataClean, 2025-26 DSCI-524 Group 02"
   },
   {
     "objectID": "reference/clean_date.html",
