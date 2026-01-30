@@ -24,10 +24,10 @@ conda env create -f environment.yml
 conda activate canadataClean
 ```
 
-You can install this package into your preferred Python environment using pip:
+You can install this package from TestPyPI into your preferred Python environment using pip:
 
 ``` bash
-$ pip install canadataClean
+$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple canadataClean
 ```
 
 To use canadataClean in your code:
