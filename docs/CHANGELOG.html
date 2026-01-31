@@ -129,8 +129,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#changelog" id="toc-changelog" class="nav-link active" data-scroll-target="#changelog">Changelog</a>
   <ul class="collapse">
-  <li><a href="#unreleased" id="toc-unreleased" class="nav-link" data-scroll-target="#unreleased">[Unreleased]</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">[0.1.0] - (1979-01-01)</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">[0.0.1] - (2026-01-08)</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">[1.0.0] - (2026-01-16)</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">[2.0.1] - (2026-01-23)</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">[3.0.1] - (2026-01-30)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -145,16 +147,43 @@ ul.task-list li input[type="checkbox"] {
 <h1>Changelog</h1>
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<section id="unreleased" class="level2">
-<h2 class="anchored" data-anchor-id="unreleased">[Unreleased]</h2>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">[0.0.1] - (2026-01-08)</h2>
 <ul>
-<li>Upcoming features and fixes</li>
+<li>Created empty shells for 4 data cleaning functions</li>
+<li>Adapted contributing and code of conduct from Copier template</li>
+<li>Created readme with summary, list of functions, and where our package fits in the python ecosystem</li>
 </ul>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">[0.1.0] - (1979-01-01)</h2>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">[1.0.0] - (2026-01-16)</h2>
 <ul>
-<li>First release</li>
+<li>Implemented clean_postalcode, clean_location, clean_date and clean_phonenumber functions</li>
+<li>Implemented test_clean_postalcode, test_clean_location, test_clean_date test_clean_phonenumber tests</li>
+<li>Implemented exception handling for tests</li>
+<li>Consulted with LLMs to improve functionality and test cases</li>
+</ul>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">[2.0.1] - (2026-01-23)</h2>
+<ul>
+<li>Created quarto documentation site for package documentation and published to GitHub pages</li>
+<li>Created build-deploy workflow with build action that runs pytest tests and deploy action that deploys package to TestPyPI</li>
+</ul>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">[3.0.1] - (2026-01-30)</h2>
+<ul>
+<li>Implementing Code Coverage functionality for test coverage visualization</li>
+<li>Implementing test for successful quarto documentation build using Netlify</li>
+<li>Adding tutorial (vignette) to demonstrate package functionality and usage</li>
+<li>Initiating a package review and making improvements based on feedback received</li>
+<li>Updated README as part of TA review feedback in <a href="https://github.com/UBC-MDS/canadataClean/issues/71">Issue #71</a> (added examples of “Canadian” format for each function, Separated “Installation” and “Functions” into separate sections)</li>
+<li>Updated README and project Quarto documentation to reflect correct way to install package from TestPyPI as per peer feedback raised in <a href="https://github.com/UBC-MDS/canadataClean/issues/81">Issue #81</a></li>
+<li>Updated Changelog to accurately reflect versions released as per feedback raised in <a href="https://github.com/UBC-MDS/canadataClean/issues/83">Issue #83</a></li>
+<li>Added quartodoc to docs dependencies in pyproject.toml as per feedback raised in <a href="https://github.com/UBC-MDS/canadataClean/issues/85">Issue #85</a></li>
+<li>Added project Quarto documentation to GitHub repository description as per feedback raised in <a href="https://github.com/UBC-MDS/canadataClean/issues/86">Issue #86</a></li>
+<li>Standardized import statements in README code snippets as per feedback raised in <a href="https://github.com/UBC-MDS/canadataClean/issues/90">Issue #90</a></li>
 </ul>
 
 

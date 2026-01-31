@@ -126,18 +126,25 @@
     "text": "Summary\nThis package helps ensure data consistency for Canadian information by formatting and validating phone numbers, postal codes, and city or province names, and by checking dates or dates of birth against Canadian date formats, highlighting any invalid entries.\nWhen a value does not meet the required Canadian format, canadataClean raises a warning-type error to flag the invalid entry while allowing data processing to continue. This makes it easy to identify and address data quality issues without interrupting workflows, while still producing clean, analysis-ready datasets."
   },
   {
-    "objectID": "index.html#get-started",
-    "href": "index.html#get-started",
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
     "title": "canadataClean",
-    "section": "Get started",
-    "text": "Get started\n\nInstallation\nTo reproduce the environment, run:\nconda env create -f environment.yml\nconda activate canadataClean\nYou can install this package into your preferred Python environment using pip:\n$ pip install canadataClean\nTo use canadataClean in your code:\nfrom canadataClean import clean_date, clean_location, clean_phonenumber, clean_postalcode\n\n\nFunctions\nclean_date(date)\nThis function cleans and validates a date string, converting common formats to the Canadian standard YYYY-MM-DD (ISO 8601).\nclean_postalcode(postal_code)\nThis function cleans and validates a Canadian postal code string field to ensure that it matches the Canadian postal code format (e.g., “A1A 1A1”).\nclean_location(location)\nThis function cleans and validates a free-text entry representing Canadian province or territory and returns the two letter province or territory code, e.g. “BC” for “British Columbia”.\nclean_phonenumber(phone_number)\nThis function cleans and validates a phone number string field to ensure that it matches the Canadian phone number format (“+1 (XXX) XXX-XXXX”)."
+    "section": "Installation",
+    "text": "Installation\nTo reproduce the environment, run:\nconda env create -f environment.yml\nconda activate canadataClean\nYou can install this package from TestPyPI into your preferred Python environment using pip:\n$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple canadataClean\nTo use canadataClean in your code:\nfrom canadataClean import clean_date, clean_location, clean_phonenumber, clean_postalcode"
+  },
+  {
+    "objectID": "index.html#functions",
+    "href": "index.html#functions",
+    "title": "canadataClean",
+    "section": "Functions",
+    "text": "Functions\nclean_date(date)\nThis function cleans and validates a date string, converting common formats to the Canadian standard YYYY-MM-DD (ISO 8601).\nclean_postalcode(postal_code)\nThis function cleans and validates a Canadian postal code string field to ensure that it matches the Canadian postal code format. This is a six-character code defined and maintained by Canada Post Corporation (CPC) for the purpose of sorting and delivering mail. The characters are arranged in the form ‘ANA NAN’, where ‘A’ represents an alphabetic character and ‘N’ represents a numeric character (e.g., K1A 0T6). More information about Canadian postal codes can be found here.\nclean_location(location)\nThis function cleans and validates a free-text entry representing Canadian province or territory and returns the two letter province or territory code, e.g. “BC” for “British Columbia”. The abbrieviations for Canadian provinces and territories can be found here.\nclean_phonenumber(phone_number)\nThis function cleans and validates a phone number string field to ensure that it matches the Canadian phone number format (“+1 (XXX) XXX-XXXX”) which includes the country code (+1) followed by a 10-digit number."
   },
   {
     "objectID": "index.html#to-run-the-tests",
     "href": "index.html#to-run-the-tests",
     "title": "canadataClean",
     "section": "To run the tests",
-    "text": "To run the tests\nYou can run the tests for this package using pytest. First, install the testing dependencies:\n$ pip install -e.[test]\nThen, run the tests with:\n$ pytest\nTo view the test coverage, run the following command:\n$ pytest --cov=src/canadata_clean"
+    "text": "To run the tests\nYou can run the tests for this package using pytest. First, install the testing dependencies:\npip install -e.[test]\nThen, run the tests with:\npytest\nTo view the test coverage, run the following command:\npytest --cov=src/canadata_clean"
   },
   {
     "objectID": "index.html#documentation",
@@ -151,7 +158,7 @@
     "href": "index.html#usage",
     "title": "canadataClean",
     "section": "Usage",
-    "text": "Usage\n\nStandardizing Dates: The clean_date function standardizes a string to the Canadian format YYYY-MM-DD (ISO 8601)\n\nfrom canadataClean.clean_date import clean_date\nclean_date = clean_date(\"date\") # Replace date with the actual date\n\nStandardizing Postal Code: The clean_postalcode function standardizes a string to the Canadian postal code format (e.g., “A1A 1A1”)\n\nfrom canadataClean.clean_postalcode import clean_postalcode\nclean_postalcode = clean_postalcode(\"postal_code\") # Replace postal_code with the actual postal_code\n\nStandardizing Provinces and Territories: The clean_location function standardizes a string to the two letter province or territory code (e.g. “BC” for “British Columbia”)\n\nfrom canadataClean.clean_location import clean_location\nclean_location = clean_location(\"location\") # Replace location with the actual province or territory\n\nStandardizing Phone Number: The clean_phonenumber function standardizes a string to the Canadian phone number format (“+1 (XXX) XXX-XXXX”)\n\nfrom canadataClean.clean_phonenumber import clean_phonenumber\nclean_phonenumber = clean_phonenumber(\"phone_number\") # Replace phone number with the actual phone number"
+    "text": "Usage\n\nStandardizing Dates: The clean_date function standardizes a string to the Canadian format YYYY-MM-DD (ISO 8601)\n\nfrom canadataClean import clean_date\ncleaned_date = clean_date(\"date\") # Replace date with the actual date\n\nStandardizing Postal Code: The clean_postalcode function standardizes a string to the Canadian postal code format (e.g., “A1A 1A1”)\n\nfrom canadataClean import clean_postalcode\ncleaned_postalcode = clean_postalcode(\"postal_code\") # Replace postal_code with the actual postal_code\n\nStandardizing Provinces and Territories: The clean_location function standardizes a string to the two letter province or territory code (e.g. “BC” for “British Columbia”)\n\nfrom canadataClean import clean_location\ncleaned_location = clean_location(\"location\") # Replace location with the actual province or territory\n\nStandardizing Phone Number: The clean_phonenumber function standardizes a string to the Canadian phone number format (“+1 (XXX) XXX-XXXX”)\n\nfrom canadataClean import clean_phonenumber\ncleaned_phonenumber = clean_phonenumber(\"phone_number\") # Replace phone number with the actual phone number"
   },
   {
     "objectID": "index.html#where-this-fits-in-the-python-ecosystem",
@@ -242,21 +249,35 @@
     "href": "CHANGELOG.html",
     "title": "Changelog",
     "section": "",
-    "text": "All notable changes to this project will be documented in this file.\nThe format is based on Keep a Changelog, and this project adheres to Semantic Versioning.\n\n\n\nUpcoming features and fixes\n\n\n\n\n\nFirst release"
-  },
-  {
-    "objectID": "CHANGELOG.html#unreleased",
-    "href": "CHANGELOG.html#unreleased",
-    "title": "Changelog",
-    "section": "",
-    "text": "Upcoming features and fixes"
+    "text": "All notable changes to this project will be documented in this file.\nThe format is based on Keep a Changelog, and this project adheres to Semantic Versioning.\n\n\n\nCreated empty shells for 4 data cleaning functions\nAdapted contributing and code of conduct from Copier template\nCreated readme with summary, list of functions, and where our package fits in the python ecosystem\n\n\n\n\n\nImplemented clean_postalcode, clean_location, clean_date and clean_phonenumber functions\nImplemented test_clean_postalcode, test_clean_location, test_clean_date test_clean_phonenumber tests\nImplemented exception handling for tests\nConsulted with LLMs to improve functionality and test cases\n\n\n\n\n\nCreated quarto documentation site for package documentation and published to GitHub pages\nCreated build-deploy workflow with build action that runs pytest tests and deploy action that deploys package to TestPyPI\n\n\n\n\n\nImplementing Code Coverage functionality for test coverage visualization\nImplementing test for successful quarto documentation build using Netlify\nAdding tutorial (vignette) to demonstrate package functionality and usage\nInitiating a package review and making improvements based on feedback received\nUpdated README as part of TA review feedback in Issue #71 (added examples of “Canadian” format for each function, Separated “Installation” and “Functions” into separate sections)\nUpdated README and project Quarto documentation to reflect correct way to install package from TestPyPI as per peer feedback raised in Issue #81\nUpdated Changelog to accurately reflect versions released as per feedback raised in Issue #83\nAdded quartodoc to docs dependencies in pyproject.toml as per feedback raised in Issue #85\nAdded project Quarto documentation to GitHub repository description as per feedback raised in Issue #86\nStandardized import statements in README code snippets as per feedback raised in Issue #90"
   },
   {
     "objectID": "CHANGELOG.html#section",
     "href": "CHANGELOG.html#section",
     "title": "Changelog",
     "section": "",
-    "text": "First release"
+    "text": "Created empty shells for 4 data cleaning functions\nAdapted contributing and code of conduct from Copier template\nCreated readme with summary, list of functions, and where our package fits in the python ecosystem"
+  },
+  {
+    "objectID": "CHANGELOG.html#section-1",
+    "href": "CHANGELOG.html#section-1",
+    "title": "Changelog",
+    "section": "",
+    "text": "Implemented clean_postalcode, clean_location, clean_date and clean_phonenumber functions\nImplemented test_clean_postalcode, test_clean_location, test_clean_date test_clean_phonenumber tests\nImplemented exception handling for tests\nConsulted with LLMs to improve functionality and test cases"
+  },
+  {
+    "objectID": "CHANGELOG.html#section-2",
+    "href": "CHANGELOG.html#section-2",
+    "title": "Changelog",
+    "section": "",
+    "text": "Created quarto documentation site for package documentation and published to GitHub pages\nCreated build-deploy workflow with build action that runs pytest tests and deploy action that deploys package to TestPyPI"
+  },
+  {
+    "objectID": "CHANGELOG.html#section-3",
+    "href": "CHANGELOG.html#section-3",
+    "title": "Changelog",
+    "section": "",
+    "text": "Implementing Code Coverage functionality for test coverage visualization\nImplementing test for successful quarto documentation build using Netlify\nAdding tutorial (vignette) to demonstrate package functionality and usage\nInitiating a package review and making improvements based on feedback received\nUpdated README as part of TA review feedback in Issue #71 (added examples of “Canadian” format for each function, Separated “Installation” and “Functions” into separate sections)\nUpdated README and project Quarto documentation to reflect correct way to install package from TestPyPI as per peer feedback raised in Issue #81\nUpdated Changelog to accurately reflect versions released as per feedback raised in Issue #83\nAdded quartodoc to docs dependencies in pyproject.toml as per feedback raised in Issue #85\nAdded project Quarto documentation to GitHub repository description as per feedback raised in Issue #86\nStandardized import statements in README code snippets as per feedback raised in Issue #90"
   },
   {
     "objectID": "CONTRIBUTING.html",
