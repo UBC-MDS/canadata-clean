@@ -3,7 +3,7 @@ name: Deploy Package To Test PyPI
 
 on:
   push:
-    branches: [ main ]
+    # branches: [ main ]
     tags:
       - 'v*.*.*'
   workflow_dispatch:
