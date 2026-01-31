@@ -1,6 +1,6 @@
 # Run Unit Tests For Pull Requests
 
-# Note: deploy.yml runs Unit Tests for Pushes to Main
+# Note: deploy.yml runs unit tests for Pushes to Main
 
 name: Build and Test Package
 

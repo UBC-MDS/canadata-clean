@@ -42,19 +42,3 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-  #     - name: Setup Pages
-  #       uses:  actions/configure-pages@v3
-        
-  #     - name: Upload to GitHub Pages
-  #       uses: actions/upload-pages-artifact@v2
-  #       with:  
-  #         path:  . /_site
-
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v2
-  #       environment:
-  #         name: github-pages
-  #         url: ${{ steps.deployment. outputs.page_url }}
